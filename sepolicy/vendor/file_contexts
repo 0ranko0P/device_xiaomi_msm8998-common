@@ -26,6 +26,9 @@
 # Mlipay
 /(vendor|system/vendor)/bin/mlipayd@1\.1                       u:object_r:hal_mlipay_default_exec:s0
 
+# Power HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.2-service.wahoo-libperfmgr u:object_r:hal_power_default_exec:s0
+
 # Sensors
 /(vendor|system/vendor)/bin/init\.panel_info\.sh              u:object_r:qti_init_shell_exec:s0
 /(mnt/vendor)/persist/PRSensorData\.txt                       u:object_r:sensors_persist_file:s0
