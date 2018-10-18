@@ -450,4 +450,8 @@
   
     <!-- Remote server that can provide NTP responses. -->
     <string translatable="false" name="config_ntpServer">time.apple.com</string>
+
+    <!-- Whether device ignores the RSSNR signal implementation -->
+    <bool name="config_ignoreRssnrSignalLevel">true</bool>
+
 </resources>
