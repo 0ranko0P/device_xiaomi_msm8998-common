@@ -19,13 +19,16 @@
 package org.omnirom.device;
 
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 
-public class DeviceSettingsActivity extends BaseActivity {
+public class DeviceSettingsActivity extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.device_settings_activity);
+
+        getFragmentManager().beginTransaction().replace(android.R.id.content,
+                new DeviceSettingsFragment(), DeviceSettingsFragment.TAG).commit();
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }

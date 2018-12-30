@@ -9,7 +9,9 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.INJECT_EVENTS" />
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <protected-broadcast android:name="com.android.systemui.doze.pulse" />
 
     <application
         android:allowBackup="false"
@@ -47,8 +49,16 @@
         </activity-alias>
 
         <activity
-            android:name=".DisplayCalibrationActivity"
-            android:exported="false" />
+            android:name=".doze.DozeSettingsActivity"
+            android:label="@string/ambient_display_title"
+            android:exported="false"
+            android:theme="@style/Theme.Main">
+            <intent-filter>
+                <action android:name="com.android.settings.action.IA_SETTINGS" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.category"
+                android:value="com.android.settings.category.ia.display" />
+        </activity>
 
         <receiver android:name=".Startup">
             <intent-filter android:priority="100">
@@ -64,6 +74,11 @@
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
+        </service>
+
+        <service
+            android:name=".doze.DozeService"
+            android:permission="XiaomiDozeService">
         </service>
     </application>
 </manifest>

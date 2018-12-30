@@ -21,7 +21,6 @@ package org.omnirom.device;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
@@ -29,7 +28,6 @@ import androidx.preference.PreferenceScreen;
 import org.omnirom.device.Preference.ButtonSwapPreference;
 import org.omnirom.device.Preference.FastChargePreference;
 import org.omnirom.device.Preference.S2SVibratorStrengthPreference;
-import org.omnirom.device.Preference.SpectrumSwitchPreference;
 import org.omnirom.device.Preference.SweepToSleepPreference;
 
 import static org.omnirom.device.Preference.ButtonSwapPreference.BUTTONS_SWAP_KEY;
@@ -37,7 +35,9 @@ import static org.omnirom.device.Preference.FastChargePreference.USB_FAST_CHARGE
 import static org.omnirom.device.Preference.S2SVibratorStrengthPreference.KEY_S2S_VIBSTRENGTH;
 import static org.omnirom.device.Preference.SweepToSleepPreference.S2S_KEY;
 
-public final class DeviceSettings extends PreferenceFragment {
+public final class DeviceSettingsFragment extends PreferenceFragment {
+
+    protected static final String TAG = "DeviceSettings";
 
     private static final String KEY_CATEGORY_DISPLAY = "display";
 

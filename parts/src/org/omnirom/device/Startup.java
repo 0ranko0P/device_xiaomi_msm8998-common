@@ -30,6 +30,7 @@ import org.omnirom.device.Preference.FastChargePreference;
 import org.omnirom.device.Preference.S2SVibratorStrengthPreference;
 import org.omnirom.device.Preference.SpectrumPreference;
 import org.omnirom.device.Preference.SweepToSleepPreference;
+import org.omnirom.device.doze.DozeUtils;
 
 public final class Startup extends BroadcastReceiver {
 
@@ -44,6 +45,10 @@ public final class Startup extends BroadcastReceiver {
             SweepToSleepPreference.FEATURE.restore(sp);
             S2SVibratorStrengthPreference.FEATURE.restore(sp);
             SpectrumPreference.FEATURE.restore(sp);
+
+            if (DozeUtils.isDozeEnabled(context) && DozeUtils.sensorsEnabled(context)) {
+                DozeUtils.startService(context);
+            }
         }
     }
 }

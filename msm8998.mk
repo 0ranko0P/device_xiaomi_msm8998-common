@@ -193,9 +193,8 @@ PRODUCT_PACKAGES += \
     vendor.display.config@2.0 \
     vendor.display.config@2.0.vendor
 
-# Doze
+# Parts
 PRODUCT_PACKAGES += \
-    XiaomiDoze \
     XiaomiParts
 
 # DPM
