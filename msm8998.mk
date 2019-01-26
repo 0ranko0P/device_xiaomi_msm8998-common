@@ -306,6 +306,7 @@ PRODUCT_PACKAGES += \
     android.hardware.power@1.2-service-qti
 
 # Properties
+include $(LOCAL_PATH)/system_prop.mk
 include $(LOCAL_PATH)/vendor_prop.mk
 
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
