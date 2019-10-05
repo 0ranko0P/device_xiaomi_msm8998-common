@@ -13,4 +13,3 @@ allow hal_power_default {
     sysfs_devices_system_cpu
 }:file { read write open };
 
-r_dir_file(hal_power_default, debugfs_wlan)
