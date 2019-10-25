@@ -10,9 +10,10 @@ LOCAL_CERTIFICATE := platform
 LOCAL_PRIVATE_PLATFORM_APIS := true
 LOCAL_PRIVILEGED_MODULE := true
 
+LOCAL_USE_AAPT2 := true
 LOCAL_AAPT_FLAGS := --auto-add-overlay
 
 LOCAL_RESOURCE_DIR := \
-    $(LOCAL_PATH)/res
+    $(LOCAL_PATH)/res \
 
 include $(BUILD_PACKAGE)
