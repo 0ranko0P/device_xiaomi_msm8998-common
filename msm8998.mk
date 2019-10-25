@@ -165,10 +165,6 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     android.hardware.renderscript@1.0-impl
 
-# DeviceSettings
-PRODUCT_PACKAGES += \
-    DeviceSettings \
-
 # Xiaomi
 PRODUCT_PACKAGES += \
     XiaomiParts
