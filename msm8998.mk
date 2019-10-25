@@ -173,6 +173,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     XiaomiParts
 
+# Doze
+PRODUCT_PACKAGES += \
+    XiaomiDoze
+
 # Device mapper verity
 PRODUCT_SYSTEM_VERITY_PARTITION=/dev/block/bootdevice/by-name/system
 PRODUCT_VENDOR_VERITY_PARTITION=/dev/block/bootdevice/by-name/cust
