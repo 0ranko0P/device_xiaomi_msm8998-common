@@ -14,8 +14,8 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">小米</string>
-    <string name="advanced_settings">高级</string>
+    <string name="app_name">小米高级设置</string>
+    <string name="app_advanced">高级</string>
     <string name="vib_title">振动</string>
     <string name="vib_strength_title">强度</string>
     <string name="vib_strength_summary">自定义振动的强度</string>

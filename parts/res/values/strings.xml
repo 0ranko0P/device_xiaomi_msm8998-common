@@ -14,8 +14,8 @@
      limitations under the License.
 -->
 <resources>
-    <string name="app_name">Xiaomi</string>
-    <string name="advanced_settings">Advanced</string>
+    <string name="app_name">Xiaomi advanced settings</string>
+    <string name="app_advanced">Advanced</string>
     <string name="vib_title">Vibrator</string>
     <string name="vib_strength_title">Strength</string>
     <string name="vib_strength_summary">Define the strength of the vibrator</string>
