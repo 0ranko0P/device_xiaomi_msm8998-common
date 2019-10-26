@@ -24,6 +24,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.TextUtils;
+import android.os.SystemProperties;
 
 public class Startup extends BroadcastReceiver {
 
@@ -51,5 +52,8 @@ public class Startup extends BroadcastReceiver {
 	DisplayCalibration.restore(context);
 
         VibratorStrengthPreference.restore(context);
+
+	String ycLevel = sharedPrefs.getString(DeviceSettings.KEY_SPECTRUM, "0");
+	SystemProperties.set(DeviceSettings.KEY_SPECTRUM_SYSTEM_PROPERTY, ycLevel);
     }
 }

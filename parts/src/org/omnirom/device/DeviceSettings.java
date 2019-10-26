@@ -26,6 +26,7 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -54,6 +55,9 @@ public class DeviceSettings extends PreferenceActivity implements
 
     private static final String KEY_KCAL = "kcal";
 
+    static final String KEY_SPECTRUM = "spectrum";
+    static final String KEY_SPECTRUM_SYSTEM_PROPERTY = "persist.sys.spectrum.profile";
+
     private TwoStatePreference mTapToWakeSwitch;
     private VibratorStrengthPreference mVibratorStrength;
 
@@ -67,6 +71,10 @@ public class DeviceSettings extends PreferenceActivity implements
         ListView lv = getListView();
         lv.setDivider(new ColorDrawable(Color.TRANSPARENT));
         lv.setDividerHeight(0);
+
+	ListPreference spectrumPreference = (ListPreference) findPreference(KEY_SPECTRUM);
+        spectrumPreference.setValue(SystemProperties.get(KEY_SPECTRUM_SYSTEM_PROPERTY, "0"));
+        spectrumPreference.setOnPreferenceChangeListener(this);
 
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
         if (mVibratorStrength != null) {
@@ -109,7 +117,12 @@ public class DeviceSettings extends PreferenceActivity implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return true;
+	if (KEY_SPECTRUM.equals(preference.getKey())) {
+	    // If you did not handle selinux stuff, setprop will thow an exception
+            SystemProperties.set(KEY_SPECTRUM_SYSTEM_PROPERTY, newValue.toString());
+            return true;
+        }
+	return false;
     }
 
     private boolean isAppInstalled(String uri) {

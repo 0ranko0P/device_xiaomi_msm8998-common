@@ -37,4 +37,10 @@
     <string name="kcal_contrast">对比度</string>
     <string name="menu_reset">重置</string>
     <string name="kcal_color_temp">色温 (K)</string>
+
+    <!-- Spectrum Profiles -->
+    <string name="spectrum_profile_title">CPU 模式</string>
+    <string name="spectrum_title">CPU 运行模式</string>
+    <string name="spectrum_summary">选择 CPU 运行模式</string>
+    <string name="spectrum_dialogTitle">选择 CPU 运行模式</string>
 </resources>

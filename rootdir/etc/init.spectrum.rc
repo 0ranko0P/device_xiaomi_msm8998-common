@@ -1,0 +1,31 @@
+# SPECTRUM KERNEL MANAGER
+# Ramdisk file for profile based kernel management
+# Implimentation inspired by Franco's fku profiles
+
+# Initialization
+on property:sys.boot_completed=1
+   chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/*
+   chmod 0644 /sys/devices/system/cpu/cpu4/cpufreq/*
+   chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/schedutil/*
+   chmod 0644 /sys/devices/system/cpu/cpu4/cpufreq/schedutil/*
+   chmod 0644 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
+   chmod 0644 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
+   chmod 0644 /dev/stune/top-app/schedtune.boost
+   # initial after boots
+   setprop persist.sys.spectrum.profile 0
+
+# Balance (default profile)
+on property:persist.sys.spectrum.profile=0
+    exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 3
+
+# Performance
+on property:persist.sys.spectrum.profile=1
+    exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 1
+
+# Battery
+on property:persist.sys.spectrum.profile=2
+    exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 5
+
+# Gaming
+on property:persist.sys.spectrum.profile=3
+    exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 0
