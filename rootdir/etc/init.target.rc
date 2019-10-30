@@ -175,7 +175,7 @@ on late-fs
     write /sys/block/sda/queue/nr_requests 256
     write /sys/block/sde/queue/iostats 0
     write /sys/block/sde/queue/nr_requests 256
-    setprop sys.io.scheduler "cfq"
+    setprop sys.io.scheduler "zen"
 
     # Wait for hwservicemanager ready since fsck might be triggered in mount_all --late
     # In such case, init won't responce the property_set from hwservicemanager and then
