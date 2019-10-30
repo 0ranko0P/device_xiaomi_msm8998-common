@@ -19,6 +19,9 @@
     <string name="vib_title">Vibrator</string>
     <string name="vib_strength_title">Strength</string>
     <string name="vib_strength_summary">Define the strength of the vibrator</string>
+    <string name="btn_title">Buttons</string>
+    <string name="btn_led_title">Led brightness</string>
+    <string name="btn_led_summary">Adjust the led brightness of buttons</string>
     <string name="taptowake_title">Tap to wake</string>
     <string name="taptowake_summary">Double-tap anywhere on the screen to wake device</string>
     <string name="device_doze_title">Ambient display</string>

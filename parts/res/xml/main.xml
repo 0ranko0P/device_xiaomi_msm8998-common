@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (C) 2014-2016 The OmniROM Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,5 +62,14 @@
             android:iconSpaceReserved="true"
             android:title="@string/vib_strength_title"
             android:summary="@string/vib_strength_summary"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/btn_title">
+        <org.omnirom.device.BacklightPreference
+            android:key="btn_brightness"
+            android:iconSpaceReserved="true"
+            android:title="@string/btn_led_title"
+            android:summary="@string/btn_led_summary"/>
     </PreferenceCategory>
 </PreferenceScreen>

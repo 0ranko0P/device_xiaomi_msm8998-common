@@ -49,6 +49,7 @@ public class DeviceSettings extends PreferenceActivity implements
     private static final String KEY_CATEGORY_DISPLAY = "display";
     public static final String KEY_TAPTOWAKE_SWITCH = "taptowake";
     public static final String KEY_VIBSTRENGTH = "vib_strength";
+    public static final String KEY_BTN_BRIGHTNESS = "btn_brightness";
 
     private static final String KEY_DEVICE_DOZE = "device_doze";
     private static final String KEY_DEVICE_DOZE_PACKAGE_NAME = "org.lineageos.settings.doze";

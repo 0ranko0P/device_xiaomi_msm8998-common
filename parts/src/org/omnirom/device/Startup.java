@@ -53,6 +53,8 @@ public class Startup extends BroadcastReceiver {
 
         VibratorStrengthPreference.restore(context);
 
+	BacklightPreference.restore(context);
+
 	String ycLevel = sharedPrefs.getString(DeviceSettings.KEY_SPECTRUM, "0");
 	SystemProperties.set(DeviceSettings.KEY_SPECTRUM_SYSTEM_PROPERTY, ycLevel);
     }
