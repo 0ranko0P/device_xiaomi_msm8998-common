@@ -71,7 +71,7 @@ public class DeviceSettings extends PreferenceActivity implements
         lv.setDividerHeight(0);
 
 	ListPreference spectrumPreference = (ListPreference) findPreference(KEY_SPECTRUM);
-        spectrumPreference.setValue(SystemProperties.get(KEY_SPECTRUM_SYSTEM_PROPERTY, "0"));
+        spectrumPreference.setValue(SystemProperties.get(KEY_SPECTRUM_SYSTEM_PROPERTY, "2"));
         spectrumPreference.setOnPreferenceChangeListener(this);
 
         mVibratorStrength = (VibratorStrengthPreference) findPreference(KEY_VIBSTRENGTH);
