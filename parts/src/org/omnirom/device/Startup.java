@@ -28,27 +28,9 @@ import android.os.SystemProperties;
 
 public class Startup extends BroadcastReceiver {
 
-    private void restore(String file, boolean enabled) {
-        if (file == null) {
-            return;
-        }
-        if (enabled) {
-            Utils.writeValue(file, "1");
-        }
-    }
-
-    private void restore(String file, String value) {
-        if (file == null) {
-            return;
-        }
-        Utils.writeValue(file, value);
-    }
-
     @Override
     public void onReceive(final Context context, final Intent bootintent) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean enabled = sharedPrefs.getBoolean(DeviceSettings.KEY_TAPTOWAKE_SWITCH, false);
-        restore(TapToWakeSwitch.getFile(), enabled);
 	DisplayCalibration.restore(context);
 
         VibratorStrengthPreference.restore(context);

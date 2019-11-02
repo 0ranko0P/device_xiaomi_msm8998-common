@@ -22,11 +22,6 @@
 	    android:fragment="org.omnirom.device.DisplayCalibration"
             android:summary="@string/kcal_summary"
 	    android:title="@string/kcal_title" />
-
-        <SwitchPreference
-            android:key="taptowake"
-            android:summary="@string/taptowake_summary"
-            android:title="@string/taptowake_title" />
     </PreferenceCategory>
 
     <Preference

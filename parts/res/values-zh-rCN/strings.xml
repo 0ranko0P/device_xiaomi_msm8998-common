@@ -22,8 +22,6 @@
     <string name="btn_title">按键</string>
     <string name="btn_led_title">亮度</string>
     <string name="btn_led_summary">自定义按键亮度</string>
-    <string name="taptowake_title">点按唤醒</string>
-    <string name="taptowake_summary">双击屏幕任意位置即可唤醒屏幕</string>
     <string name="device_doze_title">主动显示</string>
     <string name="device_doze_summary">收到通知时唤醒屏幕</string>
     <string name="display_title">显示</string>
