@@ -16,6 +16,8 @@ on property:sys.boot_completed=1
 
 # Balance (default profile)
 on property:persist.spectrum.profile=0
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
     exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 3
     setprop sys.io.scheduler "zen"
     write /sys/block/sdb/queue/scheduler zen
@@ -24,6 +26,8 @@ on property:persist.spectrum.profile=0
 
 # Performance
 on property:persist.spectrum.profile=1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
     exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 1
     setprop sys.io.scheduler "deadline"
     write /sys/block/sdb/queue/scheduler deadline
@@ -32,6 +36,8 @@ on property:persist.spectrum.profile=1
 
 # Battery
 on property:persist.spectrum.profile=2
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
     exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 5
     setprop sys.io.scheduler "noop"
     write /sys/block/sdb/queue/scheduler noop
@@ -40,6 +46,8 @@ on property:persist.spectrum.profile=2
 
 # Gaming
 on property:persist.spectrum.profile=3
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
     exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 0
     setprop sys.io.scheduler "deadline"
     write /sys/block/sdb/queue/scheduler deadline
