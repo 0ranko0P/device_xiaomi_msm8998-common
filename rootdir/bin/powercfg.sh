@@ -547,8 +547,12 @@ lock_value()
 # $1:level_number
 apply_level() 
 {
-	# 0. SELinux permissive
-	setenforce 0
+    # 0. SELinux permissive
+    seOld="$(getenforce)"
+    if [[ "$seOld" == "Enforcing" ]]; then
+        setenforce 0
+    fi
+
     # 1. backup
     backup_default
     # 2. apply modification
@@ -560,6 +564,10 @@ apply_level()
     done
     # 3. save current level to file
     echo ${1} > ${CUR_LEVEL_FILE}
+
+    if [[ "$seOld" == "Enforcing" ]]; then
+        setenforce 1
+    fi
 }
 
 # $1:value $2:file path
