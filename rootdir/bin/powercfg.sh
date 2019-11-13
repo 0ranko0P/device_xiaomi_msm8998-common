@@ -538,6 +538,9 @@ lock_value()
 		chmod 0666 ${2}
 		echo ${1} > ${2}
 		chmod 0444 ${2}
+                chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+                chmod 0664 /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor
+
 	fi
 }
 
