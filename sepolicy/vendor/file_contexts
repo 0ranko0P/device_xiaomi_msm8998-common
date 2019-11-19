@@ -17,10 +17,6 @@
 /system/bin/move_fingerprint_data\.sh                         u:object_r:move-fp-data-sh_exec:s0
 
 # Firmware
-/firmware                                                     u:object_r:firmware_file:s0
-/bt_firmware                                                  u:object_r:bt_firmware_file:s0
-
-# 打包错误:set_selinux_xattr: No such file or directory searching for label "/persist"
 /persist                                                      u:object_r:firmware_file:s0
 
 # q-gsi pubkey
