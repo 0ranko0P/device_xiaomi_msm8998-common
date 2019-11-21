@@ -33,3 +33,6 @@ sys.thermal.                                                  u:object_r:thermal
 
 # Dirac
 persist.audio.dirac.                                          u:object_r:dirac_prop:s0
+
+# WiFi
+wifi.active.interface                                         u:object_r:wifihal_prop:s0
