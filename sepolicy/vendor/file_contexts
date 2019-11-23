@@ -17,6 +17,8 @@
 /system/bin/move_fingerprint_data\.sh                         u:object_r:move-fp-data-sh_exec:s0
 
 # Firmware
+/bt_firmware                                                  u:object_r:bt_firmware_file:s0
+
 /persist                                                      u:object_r:firmware_file:s0
 
 # q-gsi pubkey
