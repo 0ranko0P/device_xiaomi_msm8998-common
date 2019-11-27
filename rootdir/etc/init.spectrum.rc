@@ -12,7 +12,7 @@ on property:sys.boot_completed=1
    chmod 0644 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
    chmod 0644 /dev/stune/top-app/schedtune.boost
    # initial after boots
-   setprop persist.sys.spectrum.profile 2
+   setprop persist.spectrum.profile 2
 
 # Balance (default profile)
 on property:persist.spectrum.profile=0
