@@ -54,8 +54,6 @@
 
     <!-- Button brightness -->
     <string name="btn_title">Buttons</string>
-    <string name="btn_led_title">Led brightness</string>
-    <string name="btn_led_summary">Adjust the led brightness of buttons</string>
 
     <!-- usb fastcharge -->
     <string name="usb_fastcharge_title">USB Fastcharge</string>
