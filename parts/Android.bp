@@ -1,0 +1,29 @@
+android_app {
+    name: "XiaomiParts",
+
+    static_libs: [
+        "SettingsLib",
+        "androidx.core_core",
+        "androidx.appcompat_appcompat",
+        "androidx.preference_preference",
+        "androidx.annotation_annotation",
+    ],
+
+    manifest: "AndroidManifest.xml",
+
+    srcs: ["src/**/*.java"],
+    required: ["DeviceSettings"],
+    certificate: "platform",
+    platform_apis: true,
+    privileged: true,
+    resource_dirs: ["res"],
+
+    optimize: {
+        enabled: false,
+    },
+    dex_preopt: {
+        enabled: true,
+    },
+
+}
+
