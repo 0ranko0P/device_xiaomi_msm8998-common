@@ -1,4 +1,5 @@
 allow system_app proc_pagetypeinfo:file rwx_file_perms;
+allow system_app sysfs_kgsl:lnk_file read;
 
 # Parts
 allow system_app sysfs_sectouch:dir search;
