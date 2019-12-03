@@ -3,3 +3,4 @@ allow untrusted_app sysfs_devfreq:dir search;
 allow untrusted_app sysfs_battery_supply:dir search;
 allow untrusted_app proc_net:file rwx_file_perms;
 
+dontaudit untrusted_app_25 net_dns_prop:file read;

@@ -4,6 +4,7 @@ allow init firmware_file:filesystem getattr;
 allow init bt_firmware_file:filesystem getattr;
 
 allow init sysfs_dm:file { write setattr };
+allow init sysfs_kgsl:file setattr;
 
 allow init hidl_base_hwservice:hwservice_manager add;
 
