@@ -1,1 +1,2 @@
 allow hal_camera_default sysfs_kgsl:lnk_file read;
+allow hal_camera_default system_file:file r_file_perms;
