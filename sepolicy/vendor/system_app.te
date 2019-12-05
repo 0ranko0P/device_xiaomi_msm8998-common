@@ -1,15 +1,23 @@
-allow system_app proc_pagetypeinfo:file rwx_file_perms;
 allow system_app sysfs_kgsl:lnk_file read;
 
 # Parts
-allow system_app sysfs_sectouch:dir search;
-allow system_app sysfs_sectouch:file rwx_file_perms;
-allow system_app sysfs_sts:file rwx_file_perms;
 allow system_app spectrum_prop:property_service set;
 get_prop(system_app, spectrum_prop);
 set_prop(system_app, spectrum_prop);
 
-# Parts-Backlight
-allow system_app sysfs_leds:dir search;
+allow system_app {
+    proc_pagetypeinfo
+    sysfs_fast
+    sysfs_kcal
+    sysfs_sectouch
+    sysfs_sts
+    sysfs_zram
+}:file rw_file_perms;
 
-allow system_app sysfs_zram:file rwx_file_perms;
+allow system_app {
+    sysfs_leds 
+    sysfs_sectouch
+    sysfs_kcal
+}:dir search;
+
+get_prop(system_app, spectrum_prop);
