@@ -4,3 +4,7 @@ allow vendor_init {
     system_data_file
     thermal_data_file
 }:dir create_dir_perms;
+
+get_prop(vendor_init, spectrum_prop)
+
+set_prop(vendor_init, spectrum_prop)
