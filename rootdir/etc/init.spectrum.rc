@@ -2,6 +2,13 @@
 # Ramdisk file for profile based kernel management
 # Implimentation inspired by Franco's fku profiles
 
+service powercfg /vendor/bin/powercfg.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
 # Initialization
 on property:sys.boot_completed=1
    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/*
@@ -14,11 +21,12 @@ on property:sys.boot_completed=1
    # initial after boots
    setprop persist.spectrum.profile 2
 
-# Balance (default profile)
+# Balance
 on property:persist.spectrum.profile=0
+    write /dev/.wipe_param_init "3"
+    start powercfg
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
-    exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 3
     setprop sys.io.scheduler "zen"
     write /sys/block/sdb/queue/scheduler zen
     write /sys/block/sdc/queue/scheduler zen
@@ -26,19 +34,21 @@ on property:persist.spectrum.profile=0
 
 # Performance
 on property:persist.spectrum.profile=1
+    write /dev/.wipe_param_init "1"
+    start powercfg
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
-    exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 1
     setprop sys.io.scheduler "deadline"
     write /sys/block/sdb/queue/scheduler deadline
     write /sys/block/sdc/queue/scheduler deadline
     write /sys/block/sdd/queue/scheduler deadline
 
-# Battery
+# Battery (default profile)
 on property:persist.spectrum.profile=2
+    write /dev/.wipe_param_init "5"
+    start powercfg
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
-    exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 5
     setprop sys.io.scheduler "noop"
     write /sys/block/sdb/queue/scheduler noop
     write /sys/block/sdc/queue/scheduler noop
@@ -46,9 +56,10 @@ on property:persist.spectrum.profile=2
 
 # Gaming
 on property:persist.spectrum.profile=3
+    write /dev/.wipe_param_init "0"
+    start powercfg
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
-    exec u:r:init:s0 root root -- /vendor/bin/sh /vendor/bin/powercfg.sh level 0
     setprop sys.io.scheduler "deadline"
     write /sys/block/sdb/queue/scheduler deadline
     write /sys/block/sdc/queue/scheduler deadline

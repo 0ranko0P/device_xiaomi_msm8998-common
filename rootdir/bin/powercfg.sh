@@ -6,6 +6,7 @@
 
 CUR_LEVEL_FILE="/dev/.wipe_cur_level"
 PARAM_BAK_FILE="/dev/.wipe_param_bak"
+PARAM_SERVICE="/dev/.wipe_param_init"
 
 # const variables
 PARAM_NUM=59
@@ -679,9 +680,16 @@ if [ -f ${PARAM_BAK_FILE} ]; then
 fi
 
 action=$1
+
 # default option is balance
 if [ ! -n "$action" ]; then
-    action="balance"
+    # powercfg service exists
+    # override default option
+    if [ -f "$PARAM_SERVICE" ]; then
+        action="level"
+    else
+        action="balance"
+    fi
 fi
 
 if [ "$action" = "debug" ]; then
@@ -731,7 +739,13 @@ if [ "$action" = "fast" ]; then
 fi
 
 if [ "$action" = "level" ]; then
-    level=${2}
+    if [ -f "$PARAM_SERVICE" ]; then
+        # Read param from file
+	level="$(cat $PARAM_SERVICE)"
+    else
+        level=${2}
+    fi
+
     if [ "${level}" -ge "0" ] && [ "${level}" -le "6" ]; then
         echo "Applying level ${level}..."
         apply_level ${level}
