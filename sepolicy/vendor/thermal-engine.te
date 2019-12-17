@@ -11,3 +11,5 @@ allow thermal-engine self:capability { chown fowner };
 allow thermal-engine sysfs:dir { read open };
 
 set_prop(thermal-engine, thermal_prop);
+
+dontaudit thermal-engine sysfs:dir read;
