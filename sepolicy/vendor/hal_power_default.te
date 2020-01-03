@@ -2,5 +2,15 @@ allow hal_power_default sysfs_sectouch:dir search;
 allow hal_power_default sysfs_sectouch:file w_file_perms;
 allow hal_power_default sysfs:file w_file_perms;
 allow hal_power_default debugfs_system_stats:file rw_file_perms;
+allow hal_power_default device_latency:chr_file { read write open };
+allow hal_power_default input_device:chr_file read;
+allow hal_power_default sysfs_kgsl:lnk_file read;
+allow hal_power_default sysfs_devfreq:dir search;
+
+allow hal_power_default {
+    sysfs_kgsl
+    sysfs_devfreq
+    sysfs_devices_system_cpu
+}:file { read write open };
 
 r_dir_file(hal_power_default, debugfs_wlan)
