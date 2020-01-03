@@ -1,3 +1,4 @@
 allow bootanim sysfs_kgsl:dir search;
 allow bootanim sysfs_kgsl:file read;
+allow bootanim sysfs_kgsl:lnk_file read;
 allow bootanim system_data_file:dir read;
