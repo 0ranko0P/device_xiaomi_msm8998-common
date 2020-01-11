@@ -1,4 +1,5 @@
 allow priv_app sysfs_kgsl:lnk_file read;
+allow priv_app privapp_data_file:fifo_file { read write open };
 
 dontaudit priv_app bt_firmware_file:filesystem getattr;
 dontaudit priv_app firmware_file:filesystem getattr;
