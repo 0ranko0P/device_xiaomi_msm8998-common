@@ -5,6 +5,7 @@ allow priv_app proc_interrupts:file open;
 allow priv_app proc_modules:file { open getattr };
 
 allow priv_app sysfs:dir open;
+allow priv_app sysfs_loop:file { read open };
 
 dontaudit priv_app bt_firmware_file:filesystem getattr;
 dontaudit priv_app firmware_file:filesystem getattr;
