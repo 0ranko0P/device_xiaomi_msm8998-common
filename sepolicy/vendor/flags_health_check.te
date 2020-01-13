@@ -1,0 +1,5 @@
+# flags_health_check.rc
+allow flags_health_check {
+    adsprpc_prop
+    apexd_prop
+}:file { open getattr };
