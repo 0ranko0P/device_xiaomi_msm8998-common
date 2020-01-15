@@ -1,4 +1,5 @@
 allow system_app sysfs_kgsl:lnk_file read;
+allow system_app sysfs_zram:dir search;
 
 # Parts
 allow system_app spectrum_prop:property_service set;
