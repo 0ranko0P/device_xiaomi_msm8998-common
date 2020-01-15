@@ -1,5 +1,5 @@
 allow priv_app sysfs_kgsl:lnk_file read;
-allow priv_app privapp_data_file:fifo_file { read write open };
+allow priv_app privapp_data_file:fifo_file { create read write open };
 allow priv_app device:dir r_file_perms;
 
 allow priv_app proc_interrupts:file open;
