@@ -3,6 +3,9 @@ typeattribute hal_fingerprint_default data_between_core_and_vendor_violators;
 allow hal_fingerprint_default fingerprint_device:chr_file rw_file_perms;
 allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
 allow hal_fingerprint_default uhid_device:chr_file rw_file_perms;
+allow hal_fingerprint_default mnt_vendor_file:dir search;
+allow hal_fingerprint_default persist_misc_file:dir search;
+allow hal_fingerprint_default persist_misc_file:file r_file_perms;
 
 allow hal_fingerprint_default fingerprint_sysfs:dir r_dir_perms;
 allow hal_fingerprint_default fingerprint_sysfs:file rw_file_perms;
