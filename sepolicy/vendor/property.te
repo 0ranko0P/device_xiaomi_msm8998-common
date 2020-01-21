@@ -4,6 +4,9 @@ type cnss_prop, property_type;
 # Fingerprint
 type vendor_fp_prop, property_type;
 
+# Power
+type power_prop, property_type;
+
 # Sensors
 type sensors_panel_prop, property_type;
 type vendor_sensors_prop, property_type;

@@ -6,6 +6,10 @@ type fingerprint_sysfs, sysfs_type, fs_type;
 type idc_file, file_type, vendor_file_type;
 type keylayout_file, file_type, vendor_file_type;
 
+# Power-helper
+type debugfs_rpm, debugfs_type, fs_type;
+type sysfs_msm_subsys, sysfs_type, fs_type;
+
 # Sweep2sleep
 type sysfs_sts, sysfs_type, fs_type;
 
