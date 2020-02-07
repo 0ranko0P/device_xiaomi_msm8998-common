@@ -46,6 +46,7 @@
 
 # Powercfg
 /vendor/bin/powercfg.sh                                       u:object_r:powercfg_exec:s0
+/dev/.wipe_param_init                                         u:object_r:powercfg_param:s0
 
 # Fast charge
 /sys/kernel/fast_charge/force_fast_charge                     u:object_r:sysfs_fast:s0
