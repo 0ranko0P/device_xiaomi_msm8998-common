@@ -1,24 +1,27 @@
 allow system_app sysfs_kgsl:lnk_file read;
-allow system_app sysfs_zram:dir search;
 
-# Parts
+# Spectrum
 allow system_app spectrum_prop:property_service set;
 get_prop(system_app, spectrum_prop);
 set_prop(system_app, spectrum_prop);
 
 allow system_app {
-    proc_pagetypeinfo
+    # FastCharge
     sysfs_fast
+    sysfs_graphics
+    # Kcal
     sysfs_kcal
     sysfs_sectouch
+    # Sweep2sleep
     sysfs_sts
     sysfs_zram
 }:file rw_file_perms;
 
 allow system_app {
+    sysfs_graphics
     sysfs_leds 
     sysfs_sectouch
+    # Kcal
     sysfs_kcal
 }:dir search;
 
-get_prop(system_app, spectrum_prop);
