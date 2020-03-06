@@ -174,6 +174,9 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service \
     android.hardware.renderscript@1.0-impl
 
+PRODUCT_PACKAGES += \
+    vendor.display.config@1.9
+
 # Doze
 PRODUCT_PACKAGES += \
     XiaomiDoze \
