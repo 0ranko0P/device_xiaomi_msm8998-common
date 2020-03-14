@@ -63,6 +63,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.eis.enable=1 \
     persist.camera.set.afd=4 \
+    persist.camera.stats.test=5 \
     persist.camera.xm.green.b=0.96 \
     persist.camera.xm.green.r=0.97 \
     persist.ts.rtmakeup=false \
@@ -122,8 +123,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.radio.apm_sim_not_pwdn=1 \
-    persist.radio.dynamic_sar=false \
     persist.radio.multisim.config=dsds \
     persist.vendor.data.mode=concurrent \
     persist.vendor.radio.apm_sim_not_pwdn=1 \
@@ -142,7 +141,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Sensors
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.qti.sensors.taptap_gesture=true \
     ro.vendor.sdk.sensors.gestures=false \
     ro.vendor.sensors.cfos=false \
     ro.vendor.sensors.cmc=false \
@@ -155,7 +153,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.sensors.pmd=false \
     ro.vendor.sensors.pug=true \
     ro.vendor.sensors.spg=false \
-    ro.vendor.sensors.sta_detect=true
+    ro.vendor.sensors.sta_detect=true \
+    ro.vendor.sensors.taptap_gesture=true
 
 # SurfaceFlinger
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
