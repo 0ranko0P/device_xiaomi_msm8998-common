@@ -3,7 +3,6 @@
 # Implimentation inspired by Franco's fku profiles
 
 service powercfg /vendor/bin/powercfg.sh
-    class main
     user root
     group root
     disabled
@@ -18,8 +17,6 @@ on property:sys.boot_completed=1
    chmod 0644 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
    chmod 0644 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
    chmod 0644 /dev/stune/top-app/schedtune.boost
-   # initial after boots
-   setprop persist.spectrum.profile 2
 
 # Balance
 on property:persist.spectrum.profile=0

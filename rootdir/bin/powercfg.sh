@@ -8,6 +8,10 @@ CUR_LEVEL_FILE="/dev/.wipe_cur_level"
 PARAM_BAK_FILE="/dev/.wipe_param_bak"
 PARAM_SERVICE="/dev/.wipe_param_init"
 
+# ignore trigger when system restore persist node
+# so it won't get triggered twice
+[ ! "$(getprop sys.boot_completed)" == "1" ] && exit 0
+
 # const variables
 PARAM_NUM=59
 
