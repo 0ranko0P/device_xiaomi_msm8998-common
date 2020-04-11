@@ -9,6 +9,8 @@ import android.service.quicksettings.TileService;
 
 import androidx.preference.PreferenceManager;
 
+import org.omnirom.device.Preference.SpectrumSwitchPreference;
+
 import static org.omnirom.device.Preference.SpectrumPreference.FEATURE;
 import static org.omnirom.device.Preference.SpectrumPreference.SPECTRUM_PREFERENCE_ADD_QS_TILE;
 
@@ -20,8 +22,10 @@ import static org.omnirom.device.Preference.SpectrumPreference.SPECTRUM_PREFEREN
 public final class SpectrumTileService extends TileService {
 
     private Tile mTile;
+    private SharedPreferences sp;
 
-    private  String[] profiles;
+    private String[] level;
+    private String[] profiles;
 
     /**
      * Update the profile only when the user closes the QS settings.
@@ -30,35 +34,38 @@ public final class SpectrumTileService extends TileService {
      *
      * @see SpectrumTileService#onStopListening()
      * */
-    private int finalProfile = -1;
-    private int oldProfile;
+    private int finalIndex = -1;
+    private int oldIndex;
 
     @Override
     public IBinder onBind(Intent intent) {
+        level = getResources().getStringArray(R.array.spectrum_values);
         profiles = getResources().getStringArray(R.array.spectrum_profiles);
-        return super.onBind(intent);
-    }
 
-    @Override
-    public void onTileAdded() {
-        super.onTileAdded();
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        sp = PreferenceManager.getDefaultSharedPreferences(this);
         // disable prompt dialog on preference
         if (sp.getBoolean(SPECTRUM_PREFERENCE_ADD_QS_TILE, true))
             sp.edit().putBoolean(SPECTRUM_PREFERENCE_ADD_QS_TILE, false).apply();
+        return super.onBind(intent);
     }
 
     @Override
     public void onStartListening() {
         super.onStartListening();
-        oldProfile = getCurrentProfile();
-
         mTile = getQsTile();
-        mTile.setState(Tile.STATE_ACTIVE);
         mTile.setIcon(Icon.createWithResource(this, R.drawable.ic_spectrum));
 
-        mTile.setLabel(profiles[getCurrentProfile()]);
+        if (!SpectrumSwitchPreference.isEnabled(sp)) {
+            mTile.setState(Tile.STATE_UNAVAILABLE);
+            mTile.updateTile();
+            return;
+        } else {
+            mTile.setState(Tile.STATE_ACTIVE);
+        }
+
+        oldIndex = remapPowerLevel(FEATURE.getCurrentValue());
+
+        mTile.setLabel(profiles[oldIndex]);
         mTile.updateTile();
     }
 
@@ -72,8 +79,9 @@ public final class SpectrumTileService extends TileService {
     @Override
     public void onStopListening() {
         super.onStopListening();
-        if (finalProfile != -1 && finalProfile != oldProfile) {
-            String newProfile = finalProfile + "";
+        if (finalIndex != -1 && finalIndex != oldIndex) {
+            getResources().getStringArray(R.array.spectrum_values);
+            String newProfile = level[finalIndex];
             if (FEATURE.applyValue(newProfile))
                 FEATURE.applySharedPreferences(newProfile, PreferenceManager.getDefaultSharedPreferences(this));
         }
@@ -81,12 +89,17 @@ public final class SpectrumTileService extends TileService {
 
     private int switchProfile() {
         // make it loop
-        final int current = (finalProfile == -1) ? oldProfile : finalProfile;
-        finalProfile = (current == profiles.length - 1) ? 0 : current + 1;
-        return finalProfile;
+        final int current = (finalIndex == -1) ? oldIndex : finalIndex;
+        finalIndex = (current == profiles.length - 1) ? 0 : current + 1;
+        return finalIndex;
     }
 
-    private int getCurrentProfile(){
-        return Integer.valueOf(FEATURE.getCurrentValue());
+    private int remapPowerLevel(String current) {
+        int index = 0;
+        while (index < level.length) {
+            if (level[index].equals(current)) return index;
+            index++;
+        }
+        return 0;
     }
 }

@@ -44,6 +44,7 @@
     <!-- Spectrum Profiles -->
     <string name="spectrum_profile_title">Kernel Profiles</string>
     <string name="spectrum_summary">Choose your kernel profile</string>
+    <string name="spectrum_switch_reboot">Reboot to take effect</string>
     <string name="spectrum_switch_summary">Enable Spectrum manger</string>
     <string name="spectrum_switch_title" translatable="false">Spectrum</string>
     <string name="spectrum_title">Kernel Profile</string>

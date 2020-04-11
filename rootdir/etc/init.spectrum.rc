@@ -17,10 +17,27 @@ on property:sys.boot_completed=1
    chmod 0644 /sys/class/kgsl/kgsl-3d0/devfreq/max_freq
    chmod 0644 /sys/class/kgsl/kgsl-3d0/devfreq/min_freq
    chmod 0644 /dev/stune/top-app/schedtune.boost
+   write /dev/.wipe_param_init "1"
+
+# Disabled
+on property:persist.spectrum.profile=false
+   # initialization is handle by xiaomi parts now
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+   write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
+   setprop sys.io.scheduler "zen"
+
+# Performance
+on property:persist.spectrum.profile=1
+    start powercfg
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
+    setprop sys.io.scheduler "deadline"
+    write /sys/block/sdb/queue/scheduler deadline
+    write /sys/block/sdc/queue/scheduler deadline
+    write /sys/block/sdd/queue/scheduler deadline
 
 # Balance
-on property:persist.spectrum.profile=0
-    write /dev/.wipe_param_init "3"
+on property:persist.spectrum.profile=3
     start powercfg
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
@@ -29,20 +46,8 @@ on property:persist.spectrum.profile=0
     write /sys/block/sdc/queue/scheduler zen
     write /sys/block/sdd/queue/scheduler zen
 
-# Performance
-on property:persist.spectrum.profile=1
-    write /dev/.wipe_param_init "1"
-    start powercfg
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
-    setprop sys.io.scheduler "deadline"
-    write /sys/block/sdb/queue/scheduler deadline
-    write /sys/block/sdc/queue/scheduler deadline
-    write /sys/block/sdd/queue/scheduler deadline
-
-# Battery (default profile)
-on property:persist.spectrum.profile=2
-    write /dev/.wipe_param_init "5"
+# Battery
+on property:persist.spectrum.profile=5
     start powercfg
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
@@ -50,14 +55,3 @@ on property:persist.spectrum.profile=2
     write /sys/block/sdb/queue/scheduler noop
     write /sys/block/sdc/queue/scheduler noop
     write /sys/block/sdd/queue/scheduler noop
-
-# Gaming
-on property:persist.spectrum.profile=3
-    write /dev/.wipe_param_init "0"
-    start powercfg
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
-    setprop sys.io.scheduler "deadline"
-    write /sys/block/sdb/queue/scheduler deadline
-    write /sys/block/sdc/queue/scheduler deadline
-    write /sys/block/sdd/queue/scheduler deadline

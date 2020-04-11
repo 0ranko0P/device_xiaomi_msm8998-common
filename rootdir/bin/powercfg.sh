@@ -4,13 +4,41 @@
 # Platform: sd835
 # Generated at: 2019-05-03 02:25:09
 
+LOG_TAG="spectrum-powercfg"
+
+# equals to sys.boot_completed
+# but that prop are not allowed to read
+SYS_BOOTED_FILE="/dev/.wipe_param_init"
 CUR_LEVEL_FILE="/dev/.wipe_cur_level"
-PARAM_BAK_FILE="/dev/.wipe_param_bak"
-PARAM_SERVICE="/dev/.wipe_param_init"
+
+action=$1
+
+loge ()
+{
+  /vendor/bin/log -t $LOG_TAG -p e "$@"
+}
+
+logi ()
+{
+  /vendor/bin/log -t $LOG_TAG -p i "$@"
+}
 
 # ignore trigger when system restore persist node
 # so it won't get triggered twice
-[ ! "$(getprop sys.boot_completed)" == "1" ] && exit 0
+isBooted="$(cat $SYS_BOOTED_FILE)"
+logi "isBooted: $isBooted"
+[ ! "$isBooted" == "1" ] && exit 0
+
+if [ ! -n "$action" ]; then
+  level="$(getprop persist.spectrum.profile)"
+  if [ "$(cat $CUR_LEVEL_FILE)" == $level ]; then
+    logi "ignore same level $level"
+    exit 0
+  fi
+
+  [ $level == "false" ] && exit 0
+  action="level"
+fi
 
 # const variables
 PARAM_NUM=59
@@ -89,69 +117,6 @@ sysfs_obj59="/sys/module/cpu_boost/parameters/input_boost_freq"
 # battery life: 110.0%
 # levelx_val1="38000"
 # levelx_val2="85 1190000:90"
-
-# LEVEL 0
-# lag percent: 2.7%
-# battery life: 90.5%
-level0_val1="0"
-level0_val2="N"
-level0_val3="0:299000 1:0 2:0 3:0 4:299000"
-level0_val4="0:1901000 1:0 2:0 3:0 4:2458000"
-level0_val5="1"
-level0_val6="interactive"
-level0_val7="299000"
-level0_val8="1901000"
-level0_val9="748000"
-level0_val10="87"
-level0_val11="18000"
-level0_val12="78000"
-level0_val13="178000 825000:138000 883000:78000 960000:98000 1036000:138000 1094000:58000 1171000:158000 1248000:98000 1478000:58000 1555000:78000 1670000:98000 1747000:158000"
-level0_val14="72 364000:52 518000:64 595000:56 672000:28 748000:72 825000:90 883000:64 960000:24 1036000:64 1094000:36 1171000:60 1248000:56 1324000:48 1401000:52 1670000:40 1747000:52 1824000:60 1900000:86"
-level0_val15="20000"
-level0_val16="-1"
-level0_val17="0"
-level0_val18="0"
-level0_val19="0"
-level0_val20="0"
-level0_val21="1"
-level0_val22="0"
-level0_val23="1"
-level0_val24="0"
-level0_val25="1"
-level0_val26="interactive"
-level0_val27="299000"
-level0_val28="2458000"
-level0_val29="1958000"
-level0_val30="60"
-level0_val31="18000"
-level0_val32="98000"
-level0_val33="198000 2035000:158000 2112000:198000 2265000:118000 2342000:198000 2361000:118000"
-level0_val34="80 345000:44 422000:36 576000:68 652000:28 729000:56 806000:60 979000:24 1056000:52 1132000:56 1344000:40 1420000:92 1497000:52 1728000:64 1804000:72 1958000:99"
-level0_val35="20000"
-level0_val36="-1"
-level0_val37="0"
-level0_val38="0"
-level0_val39="0"
-level0_val40="0"
-level0_val41="1"
-level0_val42="0"
-level0_val43="1"
-level0_val44="0"
-level0_val45="44"
-level0_val46="44"
-level0_val47="44"
-level0_val48="0"
-level0_val49="4"
-level0_val50="2"
-level0_val51="90"
-level0_val52="1"
-level0_val53="0"
-level0_val54="1"
-level0_val55="200000"
-level0_val56="400000"
-level0_val57="0"
-level0_val58="2300"
-level0_val59="0:1670000 1:0 2:0 3:0 4:345000"
 
 # LEVEL 1
 # lag percent: 15.0%
@@ -533,7 +498,6 @@ level6_val59="0:1324000 1:0 2:0 3:0 4:345000"
 
 
 # global variables
-HAS_BAK=0
 NOT_MATCH_NUM=0
 
 # $1:value $2:file path
@@ -552,14 +516,12 @@ lock_value()
 # $1:level_number
 apply_level() 
 {
-    # 0. SELinux permissive
+    # 1. SELinux permissive
     seOld="$(getenforce)"
     if [[ "$seOld" == "Enforcing" ]]; then
         setenforce 0
     fi
 
-    # 1. backup
-    backup_default
     # 2. apply modification
     for n in `seq ${PARAM_NUM}`
     do
@@ -610,45 +572,6 @@ verify_level()
     echo "Verified ${PARAM_NUM} parameters, ${NOT_MATCH_NUM} FAIL"
 }
 
-backup_default()
-{
-    if [ ${HAS_BAK} -eq 0 ]; then
-        # clear previous backup file
-        echo "" > ${PARAM_BAK_FILE}
-        for n in `seq ${PARAM_NUM}`
-        do
-            eval obj="$"sysfs_obj${n}
-            echo "bak_obj${n}=${obj}" >> ${PARAM_BAK_FILE}
-            echo "bak_val${n}=\"`cat ${obj}`\"" >> ${PARAM_BAK_FILE}
-        done
-        echo "Backup default parameters has completed."
-    else
-        echo "Backup file already exists, skip backup."
-    fi
-}
-
-restore_default()
-{
-    if [ -f ${PARAM_BAK_FILE} ]; then
-        # read backup variables
-        while read line
-        do
-            eval ${line}
-        done < ${PARAM_BAK_FILE}
-        # set backup variables
-        for n in `seq ${PARAM_NUM}`
-        do
-            eval obj="$"bak_obj${n}
-            eval val="$"bak_val${n}
-            lock_value ${val} ${obj}
-        done
-        echo "Restore OK"
-    else
-        echo "Backup file for default parameters not found."
-        echo "Restore FAIL"
-    fi
-}
-
 permanently_disable_perfd()
 {
     stop perfd
@@ -678,22 +601,15 @@ permanently_enable_perfd()
 
 echo ""
 
-# backup runonce flag
-if [ -f ${PARAM_BAK_FILE} ]; then
-    HAS_BAK=1
-fi
-
-action=$1
-
-# default option is balance
-if [ ! -n "$action" ]; then
-    # powercfg service exists
-    # override default option
-    if [ -f "$PARAM_SERVICE" ]; then
-        action="level"
+if [ "$action" = "level" ]; then
+    if [ "${level}" -ge "1" ] && [ "${level}" -le "6" ]; then
+        logi "Applying level ${level}..."
+        apply_level ${level}
+        logi "Applying level ${level} done."
     else
-        action="balance"
+        logi "Level ${level} not supported."
     fi
+    exit 0
 fi
 
 if [ "$action" = "debug" ]; then
@@ -712,51 +628,6 @@ if [ "$action" = "debug" ]; then
     fi
     echo ""
 	exit 0
-fi
-
-if [ "$action" = "restore" ]; then
-	restore_default
-fi
-
-if [ "$action" = "powersave" ]; then
-    echo "Applying powersave..."
-    apply_level 5
-    echo "Applying powersave done."
-fi
-
-if [ "$action" = "balance" ]; then
-    echo "Applying balance..."
-    apply_level 3
-    echo "Applying balance done."
-fi
-
-if [ "$action" = "performance" ]; then
-    echo "Applying performance..."
-    apply_level 1
-    echo "Applying performance done."
-fi
-
-if [ "$action" = "fast" ]; then
-    echo "Applying fast..."
-    apply_level 0
-    echo "Applying fast done."
-fi
-
-if [ "$action" = "level" ]; then
-    if [ -f "$PARAM_SERVICE" ]; then
-        # Read param from file
-	level="$(cat $PARAM_SERVICE)"
-    else
-        level=${2}
-    fi
-
-    if [ "${level}" -ge "0" ] && [ "${level}" -le "6" ]; then
-        echo "Applying level ${level}..."
-        apply_level ${level}
-        echo "Applying level ${level} done."
-    else
-        echo "Level ${level} not supported."
-    fi
 fi
 
 if [ "$action" = "perfd" ]; then

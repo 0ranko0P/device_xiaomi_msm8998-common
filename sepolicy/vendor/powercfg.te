@@ -22,4 +22,6 @@ allow powercfg selinuxfs:file { read write open };
 allow powercfg sysfs_msm_perf:dir search;
 allow powercfg sysfs_cpu_boost:dir search;
 
+get_prop(powercfg, spectrum_prop)
+
 init_daemon_domain(powercfg)
