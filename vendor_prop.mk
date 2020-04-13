@@ -116,6 +116,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.cne.feature=1
 
+# Core control
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.vendor.qti.core_ctl_max_cpu=4 \
+    ro.vendor.qti.core_ctl_min_cpu=0
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.sf.enable_gl_backpressure=1 \
@@ -148,13 +153,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.stagefright.omx_default_rank.sw-audio=1 \
     debug.stagefright.omx_default_rank=0
-
-# Perf
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.extension_library=libqti-perfd-client.so \
-    ro.vendor.qti.core_ctl_max_cpu=4 \
-    ro.vendor.qti.core_ctl_min_cpu=0 \
-    ro.vendor.qti.sys.fw.bg_apps_limit=60
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
