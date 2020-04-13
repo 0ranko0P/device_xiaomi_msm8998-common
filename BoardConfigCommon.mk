@@ -123,9 +123,6 @@ BOARD_ROOT_EXTRA_SYMLINKS := \
     /vendor/bt_firmware:/bt_firmware
 TARGET_COPY_OUT_VENDOR := vendor
 
-# Power
-TARGET_USES_INTERACTION_BOOST := true
-
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
 
