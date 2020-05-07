@@ -4,12 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.SystemProperties;
 import android.util.AttributeSet;
-import android.widget.Toast;
 
 import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
-
-import org.omnirom.device.R;
 
 import static org.omnirom.device.Preference.SpectrumPreference.SPECTRUM_DEFAULT_PROFILE;
 import static org.omnirom.device.Preference.SpectrumPreference.SPECTRUM_SYSTEM_PROPERTY;
@@ -66,10 +63,8 @@ public final class SpectrumSwitchPreference extends SwitchPreference implements
         Boolean enabled = (Boolean) newValue;
         boolean result;
         if (enabled) {
-            String value = getSharedPreferences().getString(SpectrumPreference.PREFERENCE_KEY, SPECTRUM_DEFAULT_PROFILE);
-            result =  SpectrumPreference.FEATURE.applyValue(value);
+            result =  SpectrumPreference.restore(getSharedPreferences(), false);
         } else {
-            Toast.makeText(getContext(), R.string.spectrum_switch_reboot, Toast.LENGTH_SHORT).show();
             result =  FEATURE.applyValue(false);
         }
         notifyDependencyChange(enabled);

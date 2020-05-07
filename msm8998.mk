@@ -330,7 +330,6 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.target.rc \
     init.spectrum.rc \
-    powercfg.sh\
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \

@@ -49,7 +49,7 @@
             android:title="@string/spectrum_switch_title" />
 
         <org.omnirom.device.Preference.SpectrumPreference
-            android:defaultValue="3"
+            android:defaultValue="0"
             android:dialogTitle="@string/spectrum_summary"
             android:entries="@array/spectrum_profiles"
             android:entryValues="@array/spectrum_values"

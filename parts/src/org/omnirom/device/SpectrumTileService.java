@@ -16,15 +16,14 @@ import static org.omnirom.device.Preference.SpectrumPreference.SPECTRUM_PREFEREN
 
 /**
  * TileService for spectrum profile switch
- *
+ * <p>
  * Created by 0ranko0P <ranko0p@outlook.com> on 2020.01.10
- * */
+ */
 public final class SpectrumTileService extends TileService {
 
     private Tile mTile;
     private SharedPreferences sp;
 
-    private String[] level;
     private String[] profiles;
 
     /**
@@ -33,13 +32,12 @@ public final class SpectrumTileService extends TileService {
      * avoid unnecessary I/O operation.
      *
      * @see SpectrumTileService#onStopListening()
-     * */
-    private int finalIndex = -1;
-    private int oldIndex;
+     */
+    private int finalProfile = -1;
+    private int oldProfile;
 
     @Override
     public IBinder onBind(Intent intent) {
-        level = getResources().getStringArray(R.array.spectrum_values);
         profiles = getResources().getStringArray(R.array.spectrum_profiles);
 
         sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -58,14 +56,11 @@ public final class SpectrumTileService extends TileService {
         if (!SpectrumSwitchPreference.isEnabled(sp)) {
             mTile.setState(Tile.STATE_UNAVAILABLE);
             mTile.updateTile();
-            return;
         } else {
+            oldProfile = getCurrentProfile();
             mTile.setState(Tile.STATE_ACTIVE);
+            mTile.setLabel(profiles[oldProfile]);
         }
-
-        oldIndex = remapPowerLevel(FEATURE.getCurrentValue());
-
-        mTile.setLabel(profiles[oldIndex]);
         mTile.updateTile();
     }
 
@@ -79,27 +74,21 @@ public final class SpectrumTileService extends TileService {
     @Override
     public void onStopListening() {
         super.onStopListening();
-        if (finalIndex != -1 && finalIndex != oldIndex) {
-            getResources().getStringArray(R.array.spectrum_values);
-            String newProfile = level[finalIndex];
+        if (finalProfile != -1 && finalProfile != oldProfile) {
+            String newProfile = finalProfile + "";
             if (FEATURE.applyValue(newProfile))
-                FEATURE.applySharedPreferences(newProfile, PreferenceManager.getDefaultSharedPreferences(this));
+                FEATURE.applySharedPreferences(newProfile, sp);
         }
     }
 
     private int switchProfile() {
         // make it loop
-        final int current = (finalIndex == -1) ? oldIndex : finalIndex;
-        finalIndex = (current == profiles.length - 1) ? 0 : current + 1;
-        return finalIndex;
+        final int current = (finalProfile == -1) ? oldProfile : finalProfile;
+        finalProfile = (current == profiles.length - 1) ? 0 : current + 1;
+        return finalProfile;
     }
 
-    private int remapPowerLevel(String current) {
-        int index = 0;
-        while (index < level.length) {
-            if (level[index].equals(current)) return index;
-            index++;
-        }
-        return 0;
+    private int getCurrentProfile() {
+        return Integer.parseInt(FEATURE.getCurrentValue());
     }
 }

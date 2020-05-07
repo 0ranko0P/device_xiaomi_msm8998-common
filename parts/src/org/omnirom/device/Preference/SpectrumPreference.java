@@ -44,7 +44,7 @@ public final class SpectrumPreference extends ListPreference implements
 
     public static final String PREFERENCE_KEY = "spectrum";
 
-    static final String SPECTRUM_DEFAULT_PROFILE = "3";
+    static final String SPECTRUM_DEFAULT_PROFILE = "0";
     static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
 
     public static final KernelFeature<String> FEATURE = new KernelFeature<String>() {
@@ -72,11 +72,8 @@ public final class SpectrumPreference extends ListPreference implements
 
         @Override
         public boolean restore(SharedPreferences sp) {
-            if(!isSupported() || !SpectrumSwitchPreference.isEnabled(sp)) return false;
-
-            SystemProperties.set(SPECTRUM_SYSTEM_PROPERTY, SpectrumSwitchPreference.PREFERENCE_SWITCH_OFF);
-            String value = sp.getString(PREFERENCE_KEY, SPECTRUM_DEFAULT_PROFILE);
-            return applyValue(value);
+            if(!isSupported()) return false;
+            return SpectrumPreference.restore(sp, true);
         }
     };
 
@@ -97,6 +94,13 @@ public final class SpectrumPreference extends ListPreference implements
     @Override
     public void onDependencyChanged(Preference dependency, boolean disableDependent) {
         setVisible(!disableDependent);
+    }
+
+    public static boolean restore(SharedPreferences sp, boolean checkEnabled) {
+        if(checkEnabled && !SpectrumSwitchPreference.isEnabled(sp)) return true;
+
+        String value = sp.getString(PREFERENCE_KEY, SPECTRUM_DEFAULT_PROFILE);
+        return FEATURE.applyValue(value);
     }
 
     @Override
