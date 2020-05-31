@@ -2,6 +2,9 @@ allow hal_power_default sysfs_sectouch:dir search;
 allow hal_power_default sysfs_sectouch:file w_file_perms;
 allow hal_power_default input_device:chr_file read;
 
+allow hal_power_default pps_socket:sock_file write;
+allow hal_power_default mm-pp-daemon:unix_stream_socket connectto;
+
 r_dir_file(hal_power_default, debugfs_rpm)
 r_dir_file(hal_power_default, sysfs_graphics)
 
