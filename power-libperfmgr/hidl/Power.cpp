@@ -28,7 +28,6 @@
 
 #include "AudioStreaming.h"
 #include "power-helper.h"
-#include "disp-power/DisplayLowPower.h"
 
 /* RPM runs at 19.2Mhz. Divide by 19200 for msec */
 #define RPM_CLK 19200
@@ -71,7 +70,6 @@ static const std::map<enum CameraStreamingMode, std::string> kCamStreamingHint =
 Power::Power()
     : mHintManager(nullptr),
       mInteractionHandler(nullptr),
-      mDisplayLowPower(nullptr),
       mSustainedPerfModeOn(false),
       mCameraStreamingMode(CAMERA_STREAMING_OFF),
       mReady(false) {
@@ -83,8 +81,6 @@ Power::Power()
         }
         mInteractionHandler = std::make_unique<InteractionHandler>(mHintManager);
         mInteractionHandler->Init();
-        mDisplayLowPower = std::make_unique<DisplayLowPower>();
-        mDisplayLowPower->Init();
         std::string state = android::base::GetProperty(kPowerHalStateProp, "");
         if (state == "CAMERA_STREAMING") {
             ALOGI("Initialize with CAMERA_STREAMING on");
@@ -173,7 +169,6 @@ Return<void> Power::powerHint(PowerHint_1_0 hint, int32_t data) {
             }
             break;
         case PowerHint_1_0::LOW_POWER:
-            mDisplayLowPower->SetDisplayLowPower(static_cast<bool>(data));
             break;
         default:
             break;
