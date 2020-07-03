@@ -130,9 +130,7 @@
       "Path": "vendor.powerhal.state",
       "Values": [
         "CAMERA_STREAMING",
-        "VR_SUSTAINED_PERFORMANCE",
         "SUSTAINED_PERFORMANCE",
-        "VR_MODE",
         ""
       ],
       "Type": "Property"
