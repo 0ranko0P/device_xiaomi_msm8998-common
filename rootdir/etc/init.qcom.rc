@@ -175,7 +175,7 @@ on property:ro.vendor.ril.mbn_copy_completed=1
 service init-devstart-sh /vendor/bin/init.devstart.sh
     class core
     user root
-    group root
+    group root radio
     oneshot
 
 service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
