@@ -21,7 +21,6 @@
 #include <android-base/file.h>
 #include <android-base/logging.h>
 #include <android-base/properties.h>
-#include <android-base/stringprintf.h>
 #include <android-base/strings.h>
 
 #include <log/log.h>
@@ -365,31 +364,6 @@ Return<void> Power::powerHintAsync_1_3(PowerHint_1_3 hint, int32_t data) {
         }
     } else {
         return powerHintAsync_1_2(static_cast<PowerHint_1_2>(hint), data);
-    }
-    return Void();
-}
-
-constexpr const char *boolToString(bool b) {
-    return b ? "true" : "false";
-}
-
-Return<void> Power::debug(const hidl_handle &handle, const hidl_vec<hidl_string> &) {
-    if (handle != nullptr && handle->numFds >= 1 && mReady) {
-        int fd = handle->data[0];
-
-        std::string buf(android::base::StringPrintf(
-                "HintManager Running: %s\n"
-                "CameraStreamingMode: %s\n"
-                "SustainedPerformanceMode: %s\n",
-                boolToString(mHintManager->IsRunning()),
-                kCamStreamingHint.at(mCameraStreamingMode).c_str(),
-                boolToString(mSustainedPerfModeOn)));
-        // Dump nodes through libperfmgr
-        mHintManager->DumpToFd(fd);
-        if (!android::base::WriteStringToFd(buf, fd)) {
-            PLOG(ERROR) << "Failed to dump state to fd";
-        }
-        fsync(fd);
     }
     return Void();
 }
