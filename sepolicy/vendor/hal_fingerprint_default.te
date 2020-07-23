@@ -13,6 +13,9 @@ allow hal_fingerprint_default fingerprint_sysfs:file rw_file_perms;
 allow hal_fingerprint_default fingerprintd_data_file:dir rw_dir_perms;
 allow hal_fingerprint_default fingerprintd_data_file:file create_file_perms;
 
+dontaudit hal_fingerprint_default sysfs_devfreq:dir search;
+dontaudit hal_fingerprint_default sysfs_devfreq:file r_file_perms;
+
 allow hal_fingerprint_default sysfs_kcal:dir search;
 allow hal_fingerprint_default sysfs_kcal:file { read open };
 
