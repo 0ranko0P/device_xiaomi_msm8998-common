@@ -2,10 +2,6 @@
 # Ramdisk file for profile based kernel management
 # Implimentation inspired by Franco's fku profiles
 
-on property:sys.boot_completed=1
-   # initialization is handle by xiaomi parts now
-   setprop persist.spectrum.profile "false"
-
 # Balance
 on property:persist.spectrum.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
