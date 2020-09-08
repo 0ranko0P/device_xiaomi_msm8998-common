@@ -14,7 +14,7 @@
 // limitations under the License.
 
 cc_library {
-    name: "libdisppower-pixel",
+    name: "libdisppower",
     proprietary: true,
     srcs: [
         "disp-power/InteractionHandler.cpp",
@@ -26,12 +26,6 @@ cc_library {
         "libperfmgr",
         "libutils",
     ],
-}
-
-cc_library_headers {
-    name: "pixel_power_headers",
-    vendor: true,
-    export_include_dirs: ["hidl"],
 }
 
 cc_binary {
@@ -54,17 +48,21 @@ cc_binary {
         "android.hardware.power@1.1",
         "android.hardware.power@1.2",
         "android.hardware.power@1.3",
-        "libdisppower-pixel",
+        "libdisppower",
         "libperfmgr",
+    ],
+    header_libs: [
+        "libhardware_headers",
+        "generated_kernel_headers",
     ],
     proprietary: true,
 }
 
 cc_binary {
-    name: "android.hardware.power-service.pixel-libperfmgr",
+    name: "android.hardware.power-service.msm8998-libperfmgr",
     relative_install_path: "hw",
-    init_rc: ["aidl/android.hardware.power-service.pixel-libperfmgr.rc"],
-    vintf_fragments: ["aidl/android.hardware.power-service.pixel.xml"],
+    init_rc: ["aidl/android.hardware.power-service.msm8998-libperfmgr.rc"],
+    vintf_fragments: ["aidl/android.hardware.power-service.msm8998.xml"],
     vendor: true,
     shared_libs: [
         "android.hardware.power-ndk_platform",
@@ -73,7 +71,7 @@ cc_binary {
         "liblog",
         "libutils",
         "libbinder_ndk",
-        "libdisppower-pixel",
+        "libdisppower",
         "libperfmgr",
         "pixel-power-ext-ndk_platform",
     ],
@@ -81,5 +79,9 @@ cc_binary {
         "aidl/service.cpp",
         "aidl/Power.cpp",
         "aidl/PowerExt.cpp",
+    ],
+    header_libs: [
+        "libhardware_headers",
+        "generated_kernel_headers",
     ],
 }
