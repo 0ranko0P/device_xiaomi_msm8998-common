@@ -416,12 +416,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.1-service.msm8998
 
-# VNDK
-PRODUCT_PACKAGES += \
-    libdng_sdk.vendor_32 \
-    libstdc++.vendor_32 \
-    vndk-ext
-
 # TextClassifier smart selection model files
 PRODUCT_PACKAGES += \
     textclassifier.bundle1
