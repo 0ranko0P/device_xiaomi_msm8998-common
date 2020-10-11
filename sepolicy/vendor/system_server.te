@@ -9,6 +9,3 @@ allow system_server keylayout_file:dir search;
 allow system_server keylayout_file:file r_file_perms;
 
 allow system_server sysfs_kgsl:lnk_file read;
-
-# Camera
-allow system_server persist_camera_prop:file { read open getattr };
