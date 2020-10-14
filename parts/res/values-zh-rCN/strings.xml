@@ -29,19 +29,6 @@
     <string name="s2s_title_summary">在屏幕底部滑动手势休眠</string>
     <string name="s2s_vib_strength_title_head">滑动休眠振动强度</string>
 
-    <!-- Kcal -->
-    <string name="kcal_title">色彩校准</string>
-    <string name="kcal_summary">手动校准显示器色彩</string>
-    <string name="kcal_enabled_title">开启</string>
-    <string name="kcal_enabled_summary">打开色彩校准功能</string>
-    <string name="kcal_red">红</string>
-    <string name="kcal_green">绿</string>
-    <string name="kcal_blue">蓝</string>
-    <string name="kcal_saturation">饱和度</string>
-    <string name="kcal_contrast">对比度</string>
-    <string name="menu_reset">重置</string>
-    <string name="kcal_color_temp">色温 (K)</string>
-
     <!-- Spectrum Profiles -->
     <string name="spectrum_profile_title">CPU 模式</string>
     <string name="spectrum_summary">选择 CPU 运行模式</string>

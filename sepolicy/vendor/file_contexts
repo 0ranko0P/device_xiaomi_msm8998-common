@@ -50,7 +50,4 @@
 # Fast charge
 /sys/kernel/fast_charge/force_fast_charge                     u:object_r:sysfs_fast:s0
 
-# Kcal
-/sys/devices/platform/kcal_ctrl.0(/.*)?                       u:object_r:sysfs_kcal:s0
-
 /dev/stune(/.*)?                                              u:object_r:cgroup:s0

@@ -20,13 +20,6 @@
         android:title="@string/display_title">
 
         <androidx.preference.Preference
-            android:fragment="org.omnirom.device.DisplayCalibration"
-            android:icon="@drawable/ic_kcal"
-            android:key="kcal"
-            android:summary="@string/kcal_summary"
-            android:title="@string/kcal_title" />
-
-        <androidx.preference.Preference
             android:icon="@drawable/ic_doze"
             android:key="device_doze"
             android:persistent="false"

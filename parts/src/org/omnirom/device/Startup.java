@@ -44,8 +44,6 @@ public final class Startup extends BroadcastReceiver {
             SweepToSleepPreference.FEATURE.restore(sp);
             S2SVibratorStrengthPreference.FEATURE.restore(sp);
             SpectrumPreference.FEATURE.restore(sp);
-
-            DisplayCalibration.restore(sp);
         }
     }
 }

@@ -11,8 +11,6 @@ allow system_app {
     # FastCharge
     sysfs_fast
     sysfs_graphics
-    # Kcal
-    sysfs_kcal
     sysfs_sectouch
     # Sweep2sleep
     sysfs_sts
@@ -23,7 +21,5 @@ allow system_app {
     sysfs_graphics
     sysfs_leds 
     sysfs_sectouch
-    # Kcal
-    sysfs_kcal
 }:dir search;
 

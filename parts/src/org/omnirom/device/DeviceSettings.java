@@ -40,7 +40,7 @@ import static org.omnirom.device.Preference.SweepToSleepPreference.S2S_KEY;
 public final class DeviceSettings extends PreferenceFragment {
 
     private static final String KEY_CATEGORY_DISPLAY = "display";
-    private static final String KEY_CATEGORY_KCAL = "kcal";
+
     private static final String KEY_CATEGORY_HW_BUTTONS = "hw_buttons";
     private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
 
@@ -63,21 +63,10 @@ public final class DeviceSettings extends PreferenceFragment {
         mSweep.setEnabled(SweepToSleepPreference.FEATURE.isSupported());
         mVibratorStrengthS2S.setEnabled(S2SVibratorStrengthPreference.FEATURE.isSupported());
 
-        findPreference(KEY_CATEGORY_KCAL).setEnabled(DisplayCalibration.isSupported());
-
         if (!isAppInstalled(KEY_DEVICE_DOZE_PACKAGE_NAME)) {
             PreferenceCategory displayCategory = findPreference(KEY_CATEGORY_DISPLAY);
             displayCategory.removePreference(findPreference(KEY_DEVICE_DOZE));
         }
-    }
-
-    @Override
-    public boolean onPreferenceTreeClick(Preference preference) {
-        if (KEY_CATEGORY_KCAL.equals(preference.getKey())) {
-            DisplayCalibrationActivity.startActivity(getContext());
-            return true;
-        }
-        return super.onPreferenceTreeClick(preference);
     }
 
     private boolean isAppInstalled(String uri) {
