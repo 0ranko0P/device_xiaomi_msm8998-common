@@ -73,9 +73,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
-# Boot animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
+# Bootanimation
+TARGET_BOOT_ANIMATION_RES := 1080
 
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
