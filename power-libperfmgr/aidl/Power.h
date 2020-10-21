@@ -32,10 +32,10 @@ namespace power {
 namespace impl {
 namespace pixel {
 
-using ::InteractionHandler;
 using ::aidl::android::hardware::power::Boost;
 using ::aidl::android::hardware::power::Mode;
 using ::android::perfmgr::HintManager;
+using ::aidl::google::hardware::power::impl::pixel::InteractionHandler;
 
 class Power : public ::aidl::android::hardware::power::BnPower {
   public:
