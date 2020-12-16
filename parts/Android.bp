@@ -15,6 +15,7 @@ android_app {
     required: ["DeviceSettings"],
     certificate: "platform",
     platform_apis: true,
+    system_ext_specific: true,
     privileged: true,
     resource_dirs: ["res"],
 
