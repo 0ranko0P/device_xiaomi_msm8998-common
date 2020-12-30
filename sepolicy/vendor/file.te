@@ -14,3 +14,8 @@ type sysfs_kcal, sysfs_type, fs_type;
 
 # FastCharge
 type sysfs_fastcharge, sysfs_type, fs_type;
+
+# power.stats
+type debugfs_rpm, debugfs_type, fs_type;
+type debugfs_wlan, debugfs_type, fs_type;
+type sysfs_easel, sysfs_type, fs_type;
