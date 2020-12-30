@@ -23,7 +23,7 @@ cc_library {
         "libbase",
         "libcutils",
         "liblog",
-        "libperfmgr",
+        "libperfmgr-xiaomi_msm8998",
         "libutils",
     ],
 }
@@ -59,7 +59,7 @@ cc_binary {
         "android.hardware.power@1.2",
         "android.hardware.power@1.3",
         "libdisppower-xiaomi_msm8998",
-        "libperfmgr",
+        "libperfmgr-xiaomi_msm8998",
     ],
     proprietary: true,
 }
