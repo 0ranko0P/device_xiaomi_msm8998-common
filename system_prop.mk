@@ -21,3 +21,8 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Zygote preforking
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.device_config.runtime_native.usap_pool_enabled=true
+
+# Graphics
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.hardware.egl=adreno \
+    ro.hardware.vulkan=adreno
