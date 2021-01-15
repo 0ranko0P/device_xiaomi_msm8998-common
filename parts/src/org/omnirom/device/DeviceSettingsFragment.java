@@ -18,10 +18,8 @@
 
 package org.omnirom.device;
 
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
 
@@ -39,17 +37,12 @@ public final class DeviceSettingsFragment extends PreferenceFragment {
 
     protected static final String TAG = "DeviceSettings";
 
-    private static final String KEY_CATEGORY_DISPLAY = "display";
-
     private static final String KEY_CATEGORY_HW_BUTTONS = "hw_buttons";
     private static final String KEY_CATEGORY_USB_FASTCHARGE = "usb_fastcharge";
 
-    private final String KEY_DEVICE_DOZE = "device_doze";
-    private final String KEY_DEVICE_DOZE_PACKAGE_NAME = "org.lineageos.settings.doze";
-
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        setPreferencesFromResource(R.xml.main, rootKey);
+        setPreferencesFromResource(R.xml.device_settings, rootKey);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
@@ -62,20 +55,5 @@ public final class DeviceSettingsFragment extends PreferenceFragment {
         mFastCharge.setEnabled(FastChargePreference.FEATURE.isSupported());
         mSweep.setEnabled(SweepToSleepPreference.FEATURE.isSupported());
         mVibratorStrengthS2S.setEnabled(S2SVibratorStrengthPreference.FEATURE.isSupported());
-
-        if (!isAppInstalled(KEY_DEVICE_DOZE_PACKAGE_NAME)) {
-            PreferenceCategory displayCategory = findPreference(KEY_CATEGORY_DISPLAY);
-            displayCategory.removePreference(findPreference(KEY_DEVICE_DOZE));
-        }
-    }
-
-    private boolean isAppInstalled(String uri) {
-        PackageManager pm = getContext().getPackageManager();
-        try {
-            pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (PackageManager.NameNotFoundException ignored) {
-        }
-        return false;
     }
 }
