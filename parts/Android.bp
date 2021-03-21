@@ -7,7 +7,7 @@ android_app {
         "androidx.appcompat_appcompat",
         "androidx.preference_preference",
         "androidx.annotation_annotation",
-        "devicesettings_res",
+        "org.lineageos.settings.resources",
     ],
 
     manifest: "AndroidManifest.xml",
