@@ -1,22 +1,18 @@
+# fast charge
+type sysfs_fast, sysfs_type, fs_type;
+
 # Fingerprint
-type fingerprint_persist_file, file_type;
-type fingerprint_sysfs, sysfs_type, fs_type;
+type sysfs_fingerprint, sysfs_type, fs_type;
 
 # Input devices
 type idc_file, file_type, vendor_file_type;
 type keylayout_file, file_type, vendor_file_type;
 
-# Power-helper
-type debugfs_rpm, debugfs_type, fs_type;
-type sysfs_msm_subsys, sysfs_type, fs_type;
-type debugfs_wlan, debugfs_type, fs_type;
-type sysfs_easel, sysfs_type, fs_type;
+# Power
+type sysfs_adc, sysfs_type, fs_type;
 
 # Sweep2sleep
 type sysfs_sts, sysfs_type, fs_type;
-
-# fast charge
-type sysfs_fast, sysfs_type, fs_type; 
 
 # Thermal engine
 type thermal_data_file, data_file_type, file_type;

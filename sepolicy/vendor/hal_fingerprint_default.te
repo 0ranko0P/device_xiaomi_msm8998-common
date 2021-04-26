@@ -1,5 +1,7 @@
 typeattribute hal_fingerprint_default data_between_core_and_vendor_violators;
 
+set_prop(hal_fingerprint_default, vendor_fp_prop);
+
 allow hal_fingerprint_default fingerprint_device:chr_file rw_file_perms;
 allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
 allow hal_fingerprint_default uhid_device:chr_file rw_file_perms;
@@ -7,28 +9,27 @@ allow hal_fingerprint_default mnt_vendor_file:dir search;
 allow hal_fingerprint_default persist_misc_file:dir search;
 allow hal_fingerprint_default persist_misc_file:file r_file_perms;
 
-allow hal_fingerprint_default fingerprint_sysfs:dir r_dir_perms;
-allow hal_fingerprint_default fingerprint_sysfs:file rw_file_perms;
+allow hal_fingerprint_default sysfs_fingerprint:file rw_file_perms;
 
 allow hal_fingerprint_default fingerprintd_data_file:dir rw_dir_perms;
 allow hal_fingerprint_default fingerprintd_data_file:file create_file_perms;
 
-dontaudit hal_fingerprint_default sysfs_devfreq:dir search;
-dontaudit hal_fingerprint_default sysfs_devfreq:file r_file_perms;
-
-allow hal_fingerprint_default fingerprint_persist_file:file r_file_perms;
-
 allow hal_fingerprint_default self:netlink_socket create_socket_perms_no_ioctl;
 
-allow hal_fingerprint_default hal_perf_default:binder call;
+binder_call(hal_fingerprint_default, hal_perf_default)
 allow hal_fingerprint_default hal_perf_hwservice:hwservice_manager find;
 
 dontaudit hal_fingerprint_default default_android_hwservice:hwservice_manager add;
 
-dontaudit hal_fingerprint_default sysfs_graphics:dir search;
-dontaudit hal_fingerprint_default sysfs_leds:dir search;
+dontaudit hal_fingerprint_default {
+    media_rw_data_file
+    mnt_user_file
+    sdcardfs
+    storage_file
+    sysfs_devfreq
+    sysfs_leds
+    sysfs_graphics
+}:dir { search read open };
 
-set_prop(hal_fingerprint_default, vendor_fp_prop);
-
-dontaudit hal_fingerprint_default { storage_file mnt_user_file sdcardfs media_rw_data_file }:dir { search read open };
 dontaudit hal_fingerprint_default { storage_file mnt_user_file }:lnk_file read;
+dontaudit hal_fingerprint_default sysfs_devfreq:file r_file_perms;

@@ -2,24 +2,23 @@ typeattribute system_app system_writes_vendor_properties_violators;
 
 allow system_app sysfs_kgsl:lnk_file read;
 
+allow system_app sysfs_graphics:file rw_file_perms;
+allow system_app sysfs_zram:file rw_file_perms;
+allow system_app sysfs_graphics:dir search;
+
+# Reverse button
+allow system_app sysfs_sectouch:dir search;
+allow system_app sysfs_sectouch:file rw_file_perms;
+
+# Led vibrator
+allow system_app sysfs_leds:dir search;
+
+# Fast charge
+allow system_app sysfs_fast:file rw_file_perms;
+
+# Sweep2sleep
+allow system_app sysfs_sts:file rw_file_perms;
+
 # Spectrum
-allow system_app spectrum_prop:property_service set;
 get_prop(system_app, spectrum_prop);
 set_prop(system_app, spectrum_prop);
-
-allow system_app {
-    # FastCharge
-    sysfs_fast
-    sysfs_graphics
-    sysfs_sectouch
-    # Sweep2sleep
-    sysfs_sts
-    sysfs_zram
-}:file rw_file_perms;
-
-allow system_app {
-    sysfs_graphics
-    sysfs_leds 
-    sysfs_sectouch
-}:dir search;
-

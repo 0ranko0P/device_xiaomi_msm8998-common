@@ -1,0 +1,2 @@
+# QKSMS
+allow priv_app privapp_data_file:fifo_file { create rw_file_perms };

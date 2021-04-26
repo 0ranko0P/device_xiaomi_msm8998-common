@@ -25,8 +25,8 @@ ro.boot.fpsensor                                              u:object_r:vendor_
 ro.boot.fp.pnstatus                                           u:object_r:vendor_fp_prop:s0
 
 # Mlipay
-persist.vendor.sys.pay.ifaa                                   u:object_r:vendor_tee_listener_prop:s0
-persist.vendor.sys.pay.soter                                  u:object_r:vendor_tee_listener_prop:s0
+persist.vendor.sys.pay.ifaa                                   u:object_r:mlipay_prop:s0
+persist.vendor.sys.pay.soter                                  u:object_r:mlipay_prop:s0
 
 # Power
 vendor.powerhal.audio                                         u:object_r:power_prop:s0
@@ -36,13 +36,13 @@ vendor.powerhal.state                                         u:object_r:power_p
 
 # Radio
 persist.sys.labtest_flag                                      u:object_r:exported_radio_prop:s0
-ro.build.software.version                                     u:object_r:qcom_ims_prop:s0
+ro.build.software.version                                     u:object_r:vendor_qcom_ims_prop:s0
 ro.carrier.name                                               u:object_r:exported_radio_prop:s0
-ro.miui.                                                      u:object_r:exported_radio_prop:s0
 ro.product.mod_device                                         u:object_r:exported_radio_prop:s0
 ril.fake_bs_flag0                                             u:object_r:vendor_radio_prop:s0
 ril.fake_bs_flag1                                             u:object_r:vendor_radio_prop:s0
-persist.vendor.data.qmipriod_load                             u:object_r:net_radio_prop:s0
+persist.vendor.data.shsusr_load                               u:object_r:vendor_radio_prop:s0
+persist.vendor.data.qmipriod_load                             u:object_r:vendor_radio_prop:s0
 
 # Recovery
 ro.build.expect.firmware                                      u:object_r:exported_default_prop:s0
@@ -55,7 +55,6 @@ sys.panel.                                                    u:object_r:sensors
 
 # Spectrum
 persist.spectrum.profile                                      u:object_r:spectrum_prop:s0
-persist.spectrum.chmod                                        u:object_r:spectrum_prop:s0
 
 # Thermal engine
 persist.sys.thermal.                                          u:object_r:thermal_prop:s0

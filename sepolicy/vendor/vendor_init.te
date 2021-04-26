@@ -7,8 +7,6 @@ allow vendor_init {
 
 get_prop(vendor_init, spectrum_prop)
 
-set_prop(vendor_init, spectrum_prop)
 set_prop(vendor_init, camera_prop)
 set_prop(vendor_init, vendor_persist_dpm_prop)
 set_prop(vendor_init, power_prop)
-set_prop(vendor_init, qcom_ims_prop)

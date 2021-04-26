@@ -1,8 +1,5 @@
 typeattribute system_server system_executes_vendor_violators;
 
-# Fingerprint
-allow system_server fingerprint_sysfs:file rw_file_perms;
-
 get_prop(system_server, vendor_fp_prop)
 
 allow system_server keylayout_file:dir search;

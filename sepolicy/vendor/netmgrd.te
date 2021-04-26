@@ -1,1 +1,1 @@
-set_prop(netmgrd, net_radio_prop)
+set_prop(netmgrd, vendor_radio_prop)
