@@ -423,10 +423,11 @@ system_ext/framework/qti-telephony-common.jar|8c99640be5b9b9ee886bfc450b6923a33e
 # RIL - from jasmine V11.0.28.0.QDIMIXM - modified
 vendor/etc/init/netmgrd.rc|213d147cfcfe175aa4cdf1a345f3b148ea72982d
 
-# Time services - from S62Pro RKQ1.210406.002
--vendor/app/TimeService/TimeService.apk|88f7c7f4c10f53dfd69cf7828f883d3df82003e7
-vendor/bin/time_daemon|48401d7f85c87aa3e12ce7b4a969a50cbf59c293
-vendor/lib64/libtime_genoff.so|8bb116ad297a5e4a94da2f10509509cb6e863a5f
+# Time services - LA.UM.9.6.2.r1-04100-89xx.0
+-vendor/app/TimeService/TimeService.apk|1a5f39aa2969feee50ff81ec870b5e2669ae515e
+vendor/bin/time_daemon|737bbb156a23d114aafd4b4bb9adc38e8d965391
+vendor/etc/init/init.time_daemon.rc|b253ca2a498757e14e1d7a051bf504ae09218f51
+vendor/lib64/libtime_genoff.so|3f57de1aeb7aa113a0a579cebed85ab4405b9b49
 
 # Wi-Fi Display - from LA.UM.9.6.2.r1-03300-89xx.0
 -priv-app/WfdService/WfdService.apk|a605ec4ceb3e57867759ee4d121c32afbb0195b8
