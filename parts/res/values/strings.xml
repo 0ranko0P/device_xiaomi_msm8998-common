@@ -20,6 +20,8 @@
     <string name="advanced_settings">Advanced Setting</string>
     <string name="advanced_settings_summary">Advanced</string>
 
+    <!-- Ambient settings -->
+    <string name="ambient_enable">Use ambient display</string>
     <string name="display_title">Display</string>
     <string name="device_doze_title">Ambient display</string>
 

@@ -19,19 +19,19 @@
 package org.omnirom.device;
 
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 
-public class DeviceSettingsActivity extends PreferenceActivity {
+import com.android.settingslib.collapsingtoolbar.CollapsingToolbarBaseActivity;
+import com.android.settingslib.collapsingtoolbar.R;
+
+public final class DeviceSettingsActivity extends CollapsingToolbarBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction().add(android.R.id.content,
+            getFragmentManager().beginTransaction().add(R.id.content_frame,
                     new DeviceSettingsFragment(), DeviceSettingsFragment.TAG).commit();
         }
-
-        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
