@@ -255,7 +255,7 @@ service vendor.adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
 
 service vendor.pd_mapper /vendor/bin/pd-mapper
     class core
@@ -264,4 +264,4 @@ service vendor.hvdcp_opti /vendor/bin/hvdcp_opti
     class main
     user root
     group system wakelock
-    writepid /dev/cpuset/system-background/tasks
+    task_profiles ServiceCapacityLow
