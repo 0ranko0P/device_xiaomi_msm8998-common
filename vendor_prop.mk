@@ -169,6 +169,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.radio.redir_party_num=1 \
     persist.vendor.radio.report_codec=1 \
     persist.vendor.radio.sib16_support=1 \
+    persist.sys.fflag.override.settings_provider_model=false \
     ro.telephony.default_cdma_sub=0 \
     ro.telephony.default_network=22,22 \
     ro.vendor.use_data_netmgrd=true \
