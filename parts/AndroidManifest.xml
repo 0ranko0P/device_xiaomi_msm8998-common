@@ -28,7 +28,7 @@
         <activity-alias
             android:name=".DeviceSettings"
             android:enabled="true"
-            android:exported="true"
+            android:exported="false"
             android:label="@string/advanced_settings"
             android:targetActivity=".DeviceSettingsActivity"
             android:theme="@style/Theme.SubSettingsBase">
@@ -65,7 +65,9 @@
                 android:value="com.android.settings.category.ia.display" />
         </activity>
 
-        <receiver android:name=".Startup">
+        <receiver
+            android:name=".Startup"
+            android:exported="false">
             <intent-filter android:priority="100">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
@@ -74,8 +76,8 @@
         <service android:name=".SpectrumTileService"
             android:icon="@drawable/ic_spectrum"
             android:label="@string/spectrum_profile_title"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
@@ -83,7 +85,7 @@
 
         <service
             android:name=".doze.DozeService"
-            android:permission="XiaomiDozeService">
-        </service>
+            android:permission="XiaomiDozeService"
+            android:exported="false"/>
     </application>
 </manifest>
