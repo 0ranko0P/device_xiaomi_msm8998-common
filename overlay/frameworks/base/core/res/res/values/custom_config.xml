@@ -1,12 +1,13 @@
 <resources>
-    <!-- Should we filter any display modes which are unmapped? -->
-    <bool name="config_filterDisplayModes">true</bool>
-
     <!-- Control the behavior when the user long presses the home button.
-         This needs to match the enums in
-         frameworks/base/core/java/com/android/internal/util/custom/hwkeys/DeviceKeysConstants.java.
+            0 - Nothing
+            1 - Launch all apps intent
+            2 - Launch assist intent
+            3 - Launch notification panel
+         This needs to match the constants in
+         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
-    <integer name="config_longPressOnHomeBehavior">3</integer>
+    <integer name="config_longPressOnHomeBehavior">2</integer>
 
     <!-- Whether usage of the proximity sensor during doze is supported -->
     <bool name="doze_proximity_sensor_supported">false</bool>
