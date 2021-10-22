@@ -445,6 +445,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vendor.qti.hardware.vibrator.service
 
+# VNDK
+PRODUCT_PACKAGES += \
+    libdng_sdk.vendor_32 \
+    libstdc++.vendor_32 \
+    vndk-ext
+
 # Wifi
 PRODUCT_PACKAGES += \
     ipacm \
