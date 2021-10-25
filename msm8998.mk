@@ -165,6 +165,19 @@ PRODUCT_PACKAGES += \
     vendor.qti.hardware.camera.device@1.0 \
     vendor.qti.hardware.camera.device@1.0.vendor
 
+PRODUCT_PACKAGES += \
+    audioclient-types-aidl-cpp.vendor_32 \
+    audioflinger-aidl-cpp.vendor_32 \
+    audiopolicy-aidl-cpp.vendor_32 \
+    av-types-aidl-cpp.vendor_32 \
+    libandroid_runtime_lazy.vendor_32 \
+    libaudioclient_aidl_conversion.vendor_32 \
+    libaudiofoundation.vendor_32 \
+    libmedia_omx.vendor_32 \
+    libmemunreachable.vendor_32 \
+    libshmemcompat.vendor_32 \
+    mediametricsservice-aidl-cpp.vendor_32
+
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk )
 
@@ -306,6 +319,9 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_VENDOR)/etc/media_codecs_google_video.xml
+
+PRODUCT_PACKAGES += \
+    libavservices_minijail.vendor
 
 # Network
 PRODUCT_PACKAGES += \
