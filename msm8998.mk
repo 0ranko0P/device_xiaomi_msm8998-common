@@ -492,8 +492,7 @@ PRODUCT_PACKAGES += \
     libnl \
     libmediaextractor
 
-#PRODUCT_BOOT_JARS += \
-#    WfdCommon
+include vendor/xiaomi/msm8998-common-extra/wfd.mk
 
 # Call the proprietary setup
 $(call inherit-product, vendor/xiaomi/msm8998-common/msm8998-common-vendor.mk)

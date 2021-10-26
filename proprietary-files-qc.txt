@@ -381,7 +381,6 @@ vendor/bin/time_daemon|e62d164b8c8b30743837896d4c5e8bca39b364e6
 vendor/etc/init/init.time_daemon.rc|b253ca2a498757e14e1d7a051bf504ae09218f51
 
 # Wi-Fi Display - from LA.UM.9.6.2.r1-03300-89xx.0
--framework/WfdCommon.jar|0faa0fdf415b1ecdc92dfe6a52946a3248b7b02b
 -priv-app/WfdService/WfdService.apk|a605ec4ceb3e57867759ee4d121c32afbb0195b8
 bin/wfdservice|cb053924304edda5bf4f9e3ddbbb7983e30513e9
 etc/init/wfdservice.rc|311bfdd1675e56499662f39455536b75b78477bb
