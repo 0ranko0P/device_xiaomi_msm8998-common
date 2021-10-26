@@ -83,11 +83,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
 
 # Alipay
-PRODUCT_PACKAGES += \
-    org.ifaa.android.manager
-
-#PRODUCT_BOOT_JARS += \
-#    org.ifaa.android.manager
+include vendor/xiaomi/msm8998-common-extra/ifaa.mk
 
 # Audio
 PRODUCT_PACKAGES += \
