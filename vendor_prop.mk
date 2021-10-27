@@ -173,7 +173,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=22,22 \
     ro.vendor.use_data_netmgrd=true \
     telephony.lteOnCdmaDevice=1 \
-    vendor.rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     vendor.voice.path.for.pcm.voip=true
 
 # Sensors
