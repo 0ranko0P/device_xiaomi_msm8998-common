@@ -77,6 +77,11 @@ function blob_fixup() {
     system_ext/etc/permissions/qcrilhook.xml)
         sed -i 's|/product/framework/qcrilhook.jar|/system_ext/framework/qcrilhook.jar|g' "${2}"
         ;;
+    system_ext/lib64/lib-imsvideocodec.so)
+        for LIBDPM_SHIM in $(grep -L "libshim_imsvt.so" "${2}"); do
+            "${PATCHELF}" --add-needed "libshim_imsvt.so" "$LIBDPM_SHIM"
+        done
+        ;;
     vendor/etc/permissions/qti_libpermissions.xml)
         sed -i 's|name=\"android.hidl.manager-V1.0-java|name=\"android.hidl.manager@1.0-java|g' "${2}"
         ;;
