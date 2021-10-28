@@ -192,7 +192,8 @@ PRODUCT_PACKAGES += \
     memtrack.msm8998 \
     libdisplayconfig \
     libdisplayconfig.qti.vendor \
-    libqdMetaData.system \
+    libqdMetaData \
+    libqdMetaData.vendor \
     libtinyxml
 
 PRODUCT_PACKAGES += \
