@@ -41,8 +41,6 @@ ro.carrier.name                                               u:object_r:telepho
 ro.product.mod_device                                         u:object_r:telephony_status_prop:s0
 ril.fake_bs_flag0                                             u:object_r:vendor_radio_prop:s0
 ril.fake_bs_flag1                                             u:object_r:vendor_radio_prop:s0
-persist.vendor.data.shsusr_load                               u:object_r:vendor_radio_prop:s0
-persist.vendor.data.qmipriod_load                             u:object_r:vendor_radio_prop:s0
 
 # Recovery
 ro.build.expect.firmware                                      u:object_r:exported_default_prop:s0
