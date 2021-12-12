@@ -1,26 +1,26 @@
 # cnss-daemon
-type cnss_prop, property_type;
+vendor_internal_prop(cnss_prop);
 
 # Fingerprint
-type vendor_fp_prop, property_type;
+vendor_public_prop(vendor_fp_prop);
 
 # Mlipay
-type mlipay_prop, property_type;
+vendor_public_prop(mlipay_prop);
 
 # Power
 vendor_internal_prop(power_prop);
 
 # Sensors
-type sensors_panel_prop, property_type;
+vendor_internal_prop(sensors_panel_prop);
 
 # Spectrum
-type spectrum_prop, property_type;
+vendor_public_prop(spectrum_prop);
 
 # Thermal engine
-type thermal_prop, property_type;
+vendor_internal_prop(thermal_prop);
 
 # Dirac
-type dirac_prop, property_type;
+vendor_public_prop(dirac_prop);
 
 # WiFi
-type wifihal_prop, property_type;
+vendor_internal_prop(wifihal_prop);
