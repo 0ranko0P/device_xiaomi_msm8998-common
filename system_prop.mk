@@ -18,10 +18,6 @@
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     vendor.camera.aux.packagelist=com.android.camera,org.lineageos.snap
 
-# Zygote preforking
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.device_config.runtime_native.usap_pool_enabled=true
-
 # DPM
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.vendor.dpm.feature=1 \
