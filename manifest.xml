@@ -48,11 +48,6 @@
          <fqname>@1.0::IGatekeeper/default</fqname>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.gnss</name>
-        <transport>hwbinder</transport>
-         <fqname>@1.0::IGnss/default</fqname>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.graphics.allocator</name>
         <transport>hwbinder</transport>
          <fqname>@2.0::IAllocator/default</fqname>
@@ -187,7 +182,7 @@
     <hal format="hidl">
         <name>vendor.qti.data.factory</name>
         <transport>hwbinder</transport>
-         <fqname>@2.1::IFactory/default</fqname>
+        <fqname>@2.1::IFactory/default</fqname>
     </hal>
     <hal format="hidl">
         <name>vendor.qti.hardware.alarm</name>
