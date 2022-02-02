@@ -148,6 +148,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
+    debug.cpurend.vsync=false \
     ro.hardware.egl=adreno \
     ro.hardware.vulkan=msm8998
 
