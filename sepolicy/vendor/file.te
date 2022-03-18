@@ -8,9 +8,6 @@ type sysfs_fingerprint, sysfs_type, fs_type;
 type idc_file, file_type, vendor_file_type;
 type keylayout_file, file_type, vendor_file_type;
 
-# Power
-type sysfs_adc, sysfs_type, fs_type;
-
 # Sweep2sleep
 type sysfs_sts, sysfs_type, fs_type;
 

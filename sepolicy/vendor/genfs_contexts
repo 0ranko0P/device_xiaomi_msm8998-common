@@ -18,7 +18,3 @@ genfscon sysfs /devices/virtual/graphics/fb0                                  u:
 genfscon sysfs /devices/virtual/graphics/fb1                                  u:object_r:sysfs_graphics:s0
 genfscon sysfs /devices/virtual/graphics/fb2                                  u:object_r:sysfs_graphics:s0
 genfscon sysfs /devices/virtual/graphics/fb3                                  u:object_r:sysfs_graphics:s0
-
-# Power stats
-genfscon sysfs /firmware/devicetree/base/soc/qcom,spmi@800f000/qcom,pmi8998@2/rradc@4500  u:object_r:sysfs_adc:s0
-genfscon sysfs /firmware/devicetree/base/soc/i2c@c1b5000/qcom,smb138x@8/qcom,tadc@3600    u:object_r:sysfs_adc:s0

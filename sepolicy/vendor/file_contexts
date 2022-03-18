@@ -26,7 +26,6 @@
 
 # Power HAL
 /vendor/bin/hw/android\.hardware\.power-service\.msm8998-libperfmgr u:object_r:hal_power_default_exec:s0
-/(vendor|system/vendor)/bin/hw/android\.hardware\.power\.stats@1\.0-service\.mock    u:object_r:hal_power_stats_default_exec:s0
 
 # Sensors
 /(vendor|system/vendor)/bin/init\.panel_info\.sh              u:object_r:qti_init_shell_exec:s0
