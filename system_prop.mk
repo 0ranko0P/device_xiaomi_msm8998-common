@@ -22,6 +22,11 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     persist.device_config.runtime_native.usap_pool_enabled=true
 
+# DPM
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.vendor.dpm.feature=1 \
+    persist.vendor.dpm.nsrm.bkg.evt=3955
+
 # Graphics
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.hardware.egl=adreno \
