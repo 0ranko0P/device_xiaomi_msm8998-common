@@ -1,0 +1,8 @@
+[
+  {
+    "repository": "ThankYouMario/proprietary_vendor_qcom_sdclang",
+    "target_path": "prebuilts/clang/host/linux-x86/clang-sdclang",
+    "branch": "ruby-10",
+    "remote": "github"
+  }
+]
