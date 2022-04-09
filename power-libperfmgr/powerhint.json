@@ -151,6 +151,24 @@
         ""
       ],
       "Type": "Property"
+    },
+    {
+      "Name": "UfsClkGateEnable",
+      "Path": "/sys/devices/soc/1da4000.ufshc/clkgate_enable",
+      "Values": [
+        "0",
+        "1"
+      ],
+      "ResetOnInit": true
+    },
+    {
+      "Name": "UfsHibern8Enable",
+      "Path": "/sys/devices/soc/1da4000.ufshc/hibern8_on_idle_enable",
+      "Values": [
+        "0",
+        "1"
+      ],
+      "ResetOnInit": true
     }
   ],
   "Actions": [
@@ -261,6 +279,18 @@
       "Node": "CPUBWMinFreq",
       "Duration": 1500,
       "Value": "13763"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "UfsClkGateEnable",
+      "Duration": 5000,
+      "Value": "0"
+    },
+    {
+      "PowerHint": "LAUNCH",
+      "Node": "UfsHibern8Enable",
+      "Duration": 5000,
+      "Value": "0"
     },
     {
       "PowerHint": "AUDIO_LAUNCH",
