@@ -30,6 +30,7 @@ persist.vendor.sys.pay.soter                                  u:object_r:mlipay_
 
 # Power
 vendor.powerhal.audio                                         u:object_r:power_prop:s0
+vendor.powerhal.config                                        u:object_r:power_prop:s0
 vendor.powerhal.init                                          u:object_r:power_prop:s0
 vendor.powerhal.rendering                                     u:object_r:power_prop:s0
 vendor.powerhal.state                                         u:object_r:power_prop:s0
@@ -52,7 +53,7 @@ ro.xiaomi.sar_fusion                                          u:object_r:vendor_
 sys.panel.                                                    u:object_r:sensors_panel_prop:s0
 
 # Spectrum
-persist.spectrum.profile                                      u:object_r:spectrum_prop:s0
+vendor.spectrum.profile                                       u:object_r:spectrum_prop:s0
 
 # Thermal engine
 persist.sys.thermal.                                          u:object_r:thermal_prop:s0

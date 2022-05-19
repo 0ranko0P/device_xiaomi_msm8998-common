@@ -28,7 +28,7 @@ import androidx.preference.PreferenceManager;
 import org.omnirom.device.Preference.ButtonSwapPreference;
 import org.omnirom.device.Preference.FastChargePreference;
 import org.omnirom.device.Preference.S2SVibratorStrengthPreference;
-import org.omnirom.device.Preference.SpectrumPreference;
+import org.omnirom.device.Preference.SpectrumSwitchPreference;
 import org.omnirom.device.Preference.SweepToSleepPreference;
 import org.omnirom.device.doze.DozeUtils;
 
@@ -44,7 +44,7 @@ public final class Startup extends BroadcastReceiver {
             FastChargePreference.FEATURE.restore(sp);
             SweepToSleepPreference.FEATURE.restore(sp);
             S2SVibratorStrengthPreference.FEATURE.restore(sp);
-            SpectrumPreference.FEATURE.restore(sp);
+            SpectrumSwitchPreference.FEATURE.restore(sp);
 
             if (DozeUtils.isDozeEnabled(context) && DozeUtils.sensorsEnabled(context)) {
                 DozeUtils.startService(context);
