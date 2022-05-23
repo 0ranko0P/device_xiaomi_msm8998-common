@@ -96,12 +96,18 @@ on post-fs-data
     chown system system /mnt/vendor/persist/PRSensorData.txt
     chmod 0600 /mnt/vendor/persist/PRSensorData.txt
 
-    setprop vold.post_fs_data_done 1
+    # Create directory for thermal engine
+    mkdir /data/vendor/thermal 0771 root system
+    mkdir /data/vendor/thermal/config 0771 root system
 
     # Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
     chown radio radio /data/vendor/radio/copy_complete
     chmod 0660 /data/vendor/radio/copy_complete
+
+    # keep that at the end of on post-fs-data
+    # Set indication (checked by vold) that we have finished this action
+    setprop vold.post_fs_data_done 1
 
 service qcom-c_main-sh /vendor/bin/init.class_main.sh
     class main
