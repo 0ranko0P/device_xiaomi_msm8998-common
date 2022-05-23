@@ -229,6 +229,13 @@ on charger
     setprop sys.usb.configfs 1
     setprop sys.usb.config adb
 
+service init-devstart-sh /vendor/bin/init.devstart.sh
+    class main
+    user root
+    group root radio
+    disabled
+    oneshot
+
 service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
