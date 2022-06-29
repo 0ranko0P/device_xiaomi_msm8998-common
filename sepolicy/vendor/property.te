@@ -1,6 +1,9 @@
 # cnss-daemon
 vendor_internal_prop(cnss_prop);
 
+# Device init
+vendor_internal_prop(vendor_device_prop);
+
 # Fingerprint
 vendor_public_prop(vendor_fp_prop);
 

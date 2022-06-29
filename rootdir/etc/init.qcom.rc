@@ -116,6 +116,9 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
+    # wait for devices
+    wait_for_prop vendor.qcom.devup 1
+
     # SSR setup
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
