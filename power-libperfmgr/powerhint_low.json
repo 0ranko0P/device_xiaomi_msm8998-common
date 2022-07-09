@@ -30,7 +30,7 @@
         "1267200",
         "1132800"
       ],
-      "DefaultIndex": 1,
+      "DefaultIndex": 2,
       "ResetOnInit": true
     },
     {
@@ -377,7 +377,7 @@
         "PowerHint": "Flipendo",
         "Node": "CPUBigClusterMaxFreq",
         "Duration": 0,
-        "Value": "1267200"
+        "Value": "1132800"
     }
   ]
 }

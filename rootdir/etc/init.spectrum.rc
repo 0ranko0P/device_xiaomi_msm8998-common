@@ -6,8 +6,12 @@
 on property:vendor.spectrum.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "schedutil"
-    write /sys/class/kgsl/kgsl-3d0/min_pwrlevel 6
-    write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 2
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 5000
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us 5000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 1000
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us 1000
+    write /sys/class/kgsl/kgsl-3d0/min_pwrlevel 7
+    write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 1
     write /dev/stune/top-app/schedtune.boost 1
     setprop vendor.powerhal.config powerhint.json
     restart vendor.power-hal-aidl
@@ -16,7 +20,11 @@ on property:vendor.spectrum.profile=0
 on property:vendor.spectrum.profile=1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "schedutil"
-    write /sys/class/kgsl/kgsl-3d0/min_pwrlevel 7
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us 500
+    write /sys/class/kgsl/kgsl-3d0/min_pwrlevel 6
     write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 1
     write /dev/stune/top-app/schedtune.boost 5
     setprop vendor.powerhal.config powerhint_high.json
@@ -26,6 +34,10 @@ on property:vendor.spectrum.profile=1
 on property:vendor.spectrum.profile=2
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "schedutil"
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "schedutil"
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 500
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/down_rate_limit_us 500
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 10000
+    write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us 10000
     write /sys/class/kgsl/kgsl-3d0/min_pwrlevel 7
     write /sys/class/kgsl/kgsl-3d0/max_pwrlevel 5
     write /dev/stune/top-app/schedtune.boost 1
