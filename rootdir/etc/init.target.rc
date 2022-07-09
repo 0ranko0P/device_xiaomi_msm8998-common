@@ -49,7 +49,6 @@ on init
     write /sys/block/sde/queue/nr_requests 256
 
     # Disable UFS powersaving
-    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 0
     write /sys/devices/soc/1da4000.ufshc/clkgate_enable 0
     write /sys/module/lpm_levels/parameters/sleep_disabled Y
 
@@ -161,7 +160,6 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu4/cpufreq/schedutil/up_rate_limit_us 500
 
     # Enable UFS powersaving
-    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 1
     write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
     write /sys/module/lpm_levels/parameters/sleep_disabled N
 
@@ -217,7 +215,6 @@ on charger
     mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
 
     # Enable UFS powersaving
-    write /sys/devices/soc/1da4000.ufshc/clkscale_enable 1
     write /sys/devices/soc/1da4000.ufshc/clkgate_enable 1
 
     start vendor.hvdcp_opti
